@@ -47,9 +47,9 @@ namespace WindowsFormsApp1
             //ALL DATA IS GONE AFTER EACH BUILD
 
             buildData.Add(this.buildNameBox.Text); 
-            buildData.Add("L: " + int.Parse(this.loadTimeTextbox.Text));
-            buildData.Add("W: " + int.Parse(this.workShiftsBox.Text));
-            totalWorkTimePerBuild = int.Parse(this.loadTimeTextbox.Text) + int.Parse(workShiftsBox.Text);
+            buildData.Add(int.Parse(this.loadTimeTextbox.Text));
+            buildData.Add(int.Parse(this.workShiftsBox.Text));
+            totalWorkTimePerBuild =+ int.Parse(this.loadTimeTextbox.Text) + int.Parse(workShiftsBox.Text);
             foreach (string item in this.checkedListBox1.CheckedItems)
             {
                 buildData.Add(item);

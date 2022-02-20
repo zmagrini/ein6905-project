@@ -63,7 +63,7 @@ namespace WindowsFormsApp1
             // 
             // nextBuildButton
             // 
-            this.nextBuildButton.Location = new System.Drawing.Point(348, 438);
+            this.nextBuildButton.Location = new System.Drawing.Point(342, 455);
             this.nextBuildButton.Name = "nextBuildButton";
             this.nextBuildButton.Size = new System.Drawing.Size(75, 23);
             this.nextBuildButton.TabIndex = 2;
@@ -119,17 +119,18 @@ namespace WindowsFormsApp1
             "Lab 4",
             "Lab 5",
             "Lab 6",
-            "Lab 7"});
+            "Lab 7",
+            "All Labs"});
             this.checkedListBox1.Location = new System.Drawing.Point(348, 234);
             this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(70, 128);
+            this.checkedListBox1.Size = new System.Drawing.Size(70, 146);
             this.checkedListBox1.TabIndex = 7;
             this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
             // 
             // priorityLabel
             // 
             this.priorityLabel.AutoSize = true;
-            this.priorityLabel.Location = new System.Drawing.Point(364, 378);
+            this.priorityLabel.Location = new System.Drawing.Point(358, 395);
             this.priorityLabel.Name = "priorityLabel";
             this.priorityLabel.Size = new System.Drawing.Size(50, 15);
             this.priorityLabel.TabIndex = 8;
@@ -138,7 +139,7 @@ namespace WindowsFormsApp1
             // priorityButton
             // 
             this.priorityButton.AutoSize = true;
-            this.priorityButton.Location = new System.Drawing.Point(340, 396);
+            this.priorityButton.Location = new System.Drawing.Point(334, 413);
             this.priorityButton.Name = "priorityButton";
             this.priorityButton.Size = new System.Drawing.Size(42, 19);
             this.priorityButton.TabIndex = 10;
@@ -149,7 +150,7 @@ namespace WindowsFormsApp1
             // priorityNo
             // 
             this.priorityNo.AutoSize = true;
-            this.priorityNo.Location = new System.Drawing.Point(399, 396);
+            this.priorityNo.Location = new System.Drawing.Point(393, 413);
             this.priorityNo.Name = "priorityNo";
             this.priorityNo.Size = new System.Drawing.Size(41, 19);
             this.priorityNo.TabIndex = 11;
@@ -178,7 +179,7 @@ namespace WindowsFormsApp1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(740, 493);
+            this.ClientSize = new System.Drawing.Size(740, 525);
             this.Controls.Add(this.buildNameBox);
             this.Controls.Add(this.buildNameLabel);
             this.Controls.Add(this.priorityNo);

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "12Bl67+Kt7qavVa+2zsTYTwTLtFDhTRsG6Fhm7tteoHho9dvilR9viBudlVpR4rQ3zVZIMef5oKGaO2jZ7BILA==",
+  "dgSpecHash": "XS/gOdlfj0x4ibw/5a3vj0lQR8QLC1d0u834N+tAa1+wg23bEHrNJ9G0e/iEHzgIV39hxBGQAlYl5Y/m/yOpfg==",
   "success": true,
-  "projectFilePath": "D:\\UF OEM\\Project\\WindowsFormsApp1\\WindowsFormsApp1.csproj",
+  "projectFilePath": "D:\\UF OEM\\Project\\oem-project\\WindowsFormsApp1\\WindowsFormsApp1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\zmagr\\.nuget\\packages\\closedxml\\0.95.4\\closedxml.0.95.4.nupkg.sha512",
     "C:\\Users\\zmagr\\.nuget\\packages\\documentformat.openxml\\2.7.2\\documentformat.openxml.2.7.2.nupkg.sha512",
