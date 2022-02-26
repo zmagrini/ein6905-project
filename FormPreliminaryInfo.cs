@@ -28,7 +28,7 @@ namespace WindowsFormsApp1
             totalLab6TimeUsed = 0, totalLab7TimeUsed = 0;
         List<int> potentialLabWorkTime = new List<int>();
         private List<List<object>> priorityBuilds = new List<List<object>>();
-        List<object> lowPriorityBuilds = new List<object>();
+        private List<List<object>> normalBuilds = new List<List<object>>();
         private static List<object> labOneBuildOrder = new List<object>();
         private static List<object> labTwoBuildOrder = new List<object>();
         private static List<object> labThreeBuildOrder = new List<object>();
@@ -158,16 +158,14 @@ namespace WindowsFormsApp1
                         labSixPossibleTime += ((int)listOfBuilds[i].ElementAt(1) + (int)listOfBuilds[i].ElementAt(2));
                         labSevenPossibleTime += ((int)listOfBuilds[i].ElementAt(1) + (int)listOfBuilds[i].ElementAt(2));
                     }
-                        
-                    
-
-                    //if not priority and can go in any lab, add to low priority builds (will be added to schedule last based on current lab availability) 
-                    if (listOfBuilds.ElementAt(i).Contains("All Labs") && listOfBuilds.ElementAt(i).Contains("No"))
-                        lowPriorityBuilds.Add(listOfBuilds.ElementAt(i));
                     
                     //if its a priority build, add it to list of priority builds (added to schedule first ***greedy algorithm***)
                     if (listOfBuilds.ElementAt(i).Contains("Yes"))
                         priorityBuilds.Add(listOfBuilds.ElementAt(i));
+                    
+                    //add to normal builds if not
+                    if (listOfBuilds.ElementAt(i).Contains("No"))
+                        normalBuilds.Add(listOfBuilds.ElementAt(i));
                 }
 
                 //add em to the list
@@ -181,11 +179,14 @@ namespace WindowsFormsApp1
                     labSixPossibleTime,
                     labSevenPossibleTime
                 });
-               
+
+                /*********************************************************************************************************************/
                 /*********************************************************************************************************************/
                 //                                               PRIORITY BUILDS                                                     //
                 /*********************************************************************************************************************/
-                
+                /*********************************************************************************************************************/
+
+                //TODO: 1. CHECK FOR POTENTIAL LAB TIME LEFT IN THE EVENT OF A TIE????
 
                 /*******************************************************************/
                 /********* CASE ONE: PRIORITY BUILD, ONLY 1 LAB AVAILABLE **********/
@@ -200,6 +201,7 @@ namespace WindowsFormsApp1
                         int indexToCheck1 = int.Parse(labNumber1) - 1; //converts to int and gets the index of shiftsRemainingPerLab for first available lab
                         labBuildOrder[(string)labCheck1].Add(priorityBuilds.ElementAt(i));
                         shiftsRemainingPerLab[indexToCheck1] -= (int)priorityBuilds[i].ElementAt(1) + (int)priorityBuilds[i].ElementAt(2);
+                        potentialLabWorkTime[indexToCheck1] -= (int)priorityBuilds[i].ElementAt(1) + (int)priorityBuilds[i].ElementAt(2);
                     }
                 }
 
@@ -223,7 +225,7 @@ namespace WindowsFormsApp1
                         {
                             //labCheck1
                             labBuildOrder[(string)labCheck1].Add(priorityBuilds.ElementAt(i));
-                            shiftsRemainingPerLab[indexToCheck1] -= (int)priorityBuilds[i].ElementAt(1) + (int)priorityBuilds[i].ElementAt(2);
+                            shiftsRemainingPerLab[indexToCheck1] -= (int)priorityBuilds[i].ElementAt(1) + (int)priorityBuilds[i].ElementAt(2);                           
                         }
                         else
                         {
@@ -231,6 +233,8 @@ namespace WindowsFormsApp1
                             labBuildOrder[(string)labCheck2].Add(priorityBuilds.ElementAt(i));
                             shiftsRemainingPerLab[indexToCheck2] -= (int)priorityBuilds[i].ElementAt(1) + (int)priorityBuilds[i].ElementAt(2);
                         }
+                        potentialLabWorkTime[indexToCheck1] -= (int)priorityBuilds[i].ElementAt(1) + (int)priorityBuilds[i].ElementAt(2);
+                        potentialLabWorkTime[indexToCheck2] -= (int)priorityBuilds[i].ElementAt(1) + (int)priorityBuilds[i].ElementAt(2);
                     }
                 }
 
@@ -272,6 +276,9 @@ namespace WindowsFormsApp1
                             labBuildOrder[(string)labCheck3].Add(priorityBuilds.ElementAt(i));
                             shiftsRemainingPerLab[indexToCheck3] -= (int)priorityBuilds[i].ElementAt(1) + (int)priorityBuilds[i].ElementAt(2);
                         }
+                        potentialLabWorkTime[indexToCheck1] -= (int)priorityBuilds[i].ElementAt(1) + (int)priorityBuilds[i].ElementAt(2);
+                        potentialLabWorkTime[indexToCheck2] -= (int)priorityBuilds[i].ElementAt(1) + (int)priorityBuilds[i].ElementAt(2);
+                        potentialLabWorkTime[indexToCheck3] -= (int)priorityBuilds[i].ElementAt(1) + (int)priorityBuilds[i].ElementAt(2);
                     }
                 }
 
@@ -323,6 +330,10 @@ namespace WindowsFormsApp1
                             labBuildOrder[(string)labCheck4].Add(priorityBuilds.ElementAt(i));
                             shiftsRemainingPerLab[indexToCheck4] -= (int)priorityBuilds[i].ElementAt(1) + (int)priorityBuilds[i].ElementAt(2);
                         }
+                        potentialLabWorkTime[indexToCheck1] -= (int)priorityBuilds[i].ElementAt(1) + (int)priorityBuilds[i].ElementAt(2);
+                        potentialLabWorkTime[indexToCheck2] -= (int)priorityBuilds[i].ElementAt(1) + (int)priorityBuilds[i].ElementAt(2);
+                        potentialLabWorkTime[indexToCheck3] -= (int)priorityBuilds[i].ElementAt(1) + (int)priorityBuilds[i].ElementAt(2);
+                        potentialLabWorkTime[indexToCheck4] -= (int)priorityBuilds[i].ElementAt(1) + (int)priorityBuilds[i].ElementAt(2);
                     }
                 }
 
@@ -382,13 +393,18 @@ namespace WindowsFormsApp1
                         {
                             //labCheck5
                             labBuildOrder[(string)labCheck5].Add(priorityBuilds.ElementAt(i));
-                            shiftsRemainingPerLab[indexToCheck5] -= (int)priorityBuilds[i].ElementAt(1) + (int)priorityBuilds[i].ElementAt(2);
+                            
                         }
+                        potentialLabWorkTime[indexToCheck1] -= (int)priorityBuilds[i].ElementAt(1) + (int)priorityBuilds[i].ElementAt(2);
+                        potentialLabWorkTime[indexToCheck2] -= (int)priorityBuilds[i].ElementAt(1) + (int)priorityBuilds[i].ElementAt(2);
+                        potentialLabWorkTime[indexToCheck3] -= (int)priorityBuilds[i].ElementAt(1) + (int)priorityBuilds[i].ElementAt(2);
+                        potentialLabWorkTime[indexToCheck4] -= (int)priorityBuilds[i].ElementAt(1) + (int)priorityBuilds[i].ElementAt(2);
+                        potentialLabWorkTime[indexToCheck5] -= (int)priorityBuilds[i].ElementAt(1) + (int)priorityBuilds[i].ElementAt(2);
                     }
                 }
 
                 /*******************************************************************/
-                /*********** CASE SIX: PRIORITY BUILD, 6 LABS AVAILABLE ***********/
+                /*********** CASE SIX: PRIORITY BUILD, 6 LABS AVAILABLE ************/
                 /*******************************************************************/
                 for (int i = 0; i < priorityBuilds.Count; i++)
                 {
@@ -453,8 +469,14 @@ namespace WindowsFormsApp1
                         {
                             //labCheck6
                             labBuildOrder[(string)labCheck6].Add(priorityBuilds.ElementAt(i));
-                            shiftsRemainingPerLab[indexToCheck6] -= (int)priorityBuilds[i].ElementAt(1) + (int)priorityBuilds[i].ElementAt(2);
+                            shiftsRemainingPerLab[indexToCheck6] -= (int)priorityBuilds[i].ElementAt(1) + (int)priorityBuilds[i].ElementAt(2);                          
                         }
+                        potentialLabWorkTime[indexToCheck1] -= (int)priorityBuilds[i].ElementAt(1) + (int)priorityBuilds[i].ElementAt(2);
+                        potentialLabWorkTime[indexToCheck2] -= (int)priorityBuilds[i].ElementAt(1) + (int)priorityBuilds[i].ElementAt(2);
+                        potentialLabWorkTime[indexToCheck3] -= (int)priorityBuilds[i].ElementAt(1) + (int)priorityBuilds[i].ElementAt(2);
+                        potentialLabWorkTime[indexToCheck4] -= (int)priorityBuilds[i].ElementAt(1) + (int)priorityBuilds[i].ElementAt(2);
+                        potentialLabWorkTime[indexToCheck5] -= (int)priorityBuilds[i].ElementAt(1) + (int)priorityBuilds[i].ElementAt(2);
+                        potentialLabWorkTime[indexToCheck6] -= (int)priorityBuilds[i].ElementAt(1) + (int)priorityBuilds[i].ElementAt(2);
                     }
                 }
 
@@ -469,23 +491,329 @@ namespace WindowsFormsApp1
                         string labName = "Lab " + (indexOfMax + 1);
                         labBuildOrder[labName].Add(priorityBuilds.ElementAt(i));
                         shiftsRemainingPerLab[indexOfMax] -= (int)priorityBuilds[i].ElementAt(1) + (int)priorityBuilds[i].ElementAt(2);
+                        potentialLabWorkTime[indexOfMax] -= (int)priorityBuilds[i].ElementAt(1) + (int)priorityBuilds[i].ElementAt(2);
                     }
-
                 }
-
+                /*********************************************************************************************************************/
                 /*********************************************************************************************************************/
                 //                                             NON-PRIORITY BUILDS                                                   //
                 /*********************************************************************************************************************/
+                /*********************************************************************************************************************/
+
+                /*******************************************************************/
+                /********** CASE ONE: NORMAL BUILD, ONLY 1 LAB AVAILABLE ***********/
+                /*******************************************************************/
+                for (int i = 0; i < normalBuilds.Count; i++)
+                {
+                    if (((normalBuilds.ElementAt(i).Count - 4) == 1) && (normalBuilds.ElementAt(i).Contains("All Labs") == false)) //if priority build has only one lab it can be worked, add it to that lab's queue to be scheduled
+                    {
+                        //add to lab priority list (place these first)
+                        labCheck1 = normalBuilds[i].ElementAt(3); //available lab
+                        string labNumber1 = Regex.Replace((string)labCheck1, "Lab ", string.Empty); //to string
+                        int indexToCheck1 = int.Parse(labNumber1) - 1; //converts to int and gets the index of shiftsRemainingPerLab for first available lab
+                        labBuildOrder[(string)labCheck1].Add(normalBuilds.ElementAt(i));
+                        shiftsRemainingPerLab[indexToCheck1] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                        potentialLabWorkTime[indexToCheck1] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                    }
+                }
+
+                /*******************************************************************/
+                /************ CASE TWO: NORMAL BUILD, 2 LABS AVAILABLE *************/
+                /*******************************************************************/
+                for (int i = 0; i < normalBuilds.Count; i++)
+                {
+                    if ((normalBuilds.ElementAt(i).Count - 4) == 2) //if 2 labs
+                    {
+                        labCheck1 = normalBuilds[i].ElementAt(3); //available lab
+                        labCheck2 = normalBuilds[i].ElementAt(4); //available lab
+                        string labNumber1 = Regex.Replace((string)labCheck1, "Lab ", string.Empty); //to string
+                        string labNumber2 = Regex.Replace((string)labCheck2, "Lab ", string.Empty); //to string
+                        int indexToCheck1 = int.Parse(labNumber1) - 1; //converts to int and gets the index of shiftsRemainingPerLab for first available lab
+                        int indexToCheck2 = int.Parse(labNumber2) - 1; //converts to int and gets the index of shiftsRemainingPerLab for next available lab
+                        int timeRemaining1 = shiftsRemainingPerLab[indexToCheck1]; //gives shifts remaining in this lab
+                        int timeRemaining2 = shiftsRemainingPerLab[indexToCheck2]; //gives shifts remaining in next lab
+                        int labWithMoreTime = Math.Max(timeRemaining1, timeRemaining2);
+                        if (labWithMoreTime == timeRemaining1)
+                        {
+                            //labCheck1
+                            labBuildOrder[(string)labCheck1].Add(normalBuilds.ElementAt(i));
+                            shiftsRemainingPerLab[indexToCheck1] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                        }
+                        else
+                        {
+                            //labCheck2
+                            labBuildOrder[(string)labCheck2].Add(normalBuilds.ElementAt(i));
+                            shiftsRemainingPerLab[indexToCheck2] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                        }
+                        potentialLabWorkTime[indexToCheck1] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                        potentialLabWorkTime[indexToCheck2] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                    }
+                }
+
+                /*******************************************************************/
+                /*********** CASE THREE: NORMAL BUILD, 3 LABS AVAILABLE ************/
+                /*******************************************************************/
+                for (int i = 0; i < normalBuilds.Count; i++)
+                {
+                    if ((normalBuilds.ElementAt(i).Count - 4) == 3) //if 3 labs
+                    {
+                        labCheck1 = normalBuilds[i].ElementAt(3); //available lab 1
+                        labCheck2 = normalBuilds[i].ElementAt(4); //available lab 2
+                        labCheck3 = normalBuilds[i].ElementAt(5); //available lab 3
+                        string labNumber1 = Regex.Replace((string)labCheck1, "Lab ", string.Empty); //to string
+                        string labNumber2 = Regex.Replace((string)labCheck2, "Lab ", string.Empty); //to string
+                        string labNumber3 = Regex.Replace((string)labCheck3, "Lab ", string.Empty); //to string
+                        int indexToCheck1 = int.Parse(labNumber1) - 1; //converts to int and gets the index of shiftsRemainingPerLab for first available lab
+                        int indexToCheck2 = int.Parse(labNumber2) - 1; //converts to int and gets the index of shiftsRemainingPerLab for next available lab
+                        int indexToCheck3 = int.Parse(labNumber3) - 1; //converts to int and gets the index of shiftsRemainingPerLab for next available lab
+                        int timeRemaining1 = shiftsRemainingPerLab[indexToCheck1]; //gives shifts remaining in this lab
+                        int timeRemaining2 = shiftsRemainingPerLab[indexToCheck2]; //gives shifts remaining in next lab
+                        int timeRemaining3 = shiftsRemainingPerLab[indexToCheck3]; //gives shifts remaining in next lab
+                        int labWithMoreTime = MoreMath.Max(timeRemaining1, timeRemaining2, timeRemaining3);
+                        if (labWithMoreTime == timeRemaining1)
+                        {
+                            //labCheck1
+                            labBuildOrder[(string)labCheck1].Add(normalBuilds.ElementAt(i));
+                            shiftsRemainingPerLab[indexToCheck1] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                        }
+                        else if (labWithMoreTime == timeRemaining2)
+                        {
+                            //labCheck2
+                            labBuildOrder[(string)labCheck2].Add(normalBuilds.ElementAt(i));
+                            shiftsRemainingPerLab[indexToCheck2] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                        }
+                        else
+                        {
+                            //labCheck3
+                            labBuildOrder[(string)labCheck3].Add(normalBuilds.ElementAt(i));
+                            shiftsRemainingPerLab[indexToCheck3] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                        }
+                        potentialLabWorkTime[indexToCheck1] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                        potentialLabWorkTime[indexToCheck2] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                        potentialLabWorkTime[indexToCheck3] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                    }
+                }
+
+                /*******************************************************************/
+                /************ CASE FOUR: NORMAL BUILD, 4 LABS AVAILABLE ************/
+                /*******************************************************************/
+                for (int i = 0; i < normalBuilds.Count; i++)
+                {
+                    if ((normalBuilds.ElementAt(i).Count - 4) == 4) //if 4 labs
+                    {
+                        labCheck1 = normalBuilds[i].ElementAt(3); //available lab 1
+                        labCheck2 = normalBuilds[i].ElementAt(4); //available lab 2
+                        labCheck3 = normalBuilds[i].ElementAt(5); //available lab 3
+                        labCheck4 = normalBuilds[i].ElementAt(6); //available lab 4
+                        string labNumber1 = Regex.Replace((string)labCheck1, "Lab ", string.Empty); //to string
+                        string labNumber2 = Regex.Replace((string)labCheck2, "Lab ", string.Empty); //to string
+                        string labNumber3 = Regex.Replace((string)labCheck3, "Lab ", string.Empty); //to string
+                        string labNumber4 = Regex.Replace((string)labCheck4, "Lab ", string.Empty); //to string
+                        int indexToCheck1 = int.Parse(labNumber1) - 1; //converts to int and gets the index of shiftsRemainingPerLab for first available lab
+                        int indexToCheck2 = int.Parse(labNumber2) - 1; //converts to int and gets the index of shiftsRemainingPerLab for next available lab
+                        int indexToCheck3 = int.Parse(labNumber3) - 1; //converts to int and gets the index of shiftsRemainingPerLab for next available lab
+                        int indexToCheck4 = int.Parse(labNumber4) - 1; //converts to int and gets the index of shiftsRemainingPerLab for next available lab
+                        int timeRemaining1 = shiftsRemainingPerLab[indexToCheck1]; //gives shifts remaining in this lab
+                        int timeRemaining2 = shiftsRemainingPerLab[indexToCheck2]; //gives shifts remaining in next lab
+                        int timeRemaining3 = shiftsRemainingPerLab[indexToCheck3]; //gives shifts remaining in next lab
+                        int timeRemaining4 = shiftsRemainingPerLab[indexToCheck4]; //gives shifts remaining in next lab
+                        int labWithMoreTime = MoreMath.Max(timeRemaining1, timeRemaining2, timeRemaining3, timeRemaining4);
+                        if (labWithMoreTime == timeRemaining1)
+                        {
+                            //labCheck1
+                            labBuildOrder[(string)labCheck1].Add(normalBuilds.ElementAt(i));
+                            shiftsRemainingPerLab[indexToCheck1] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                        }
+                        else if (labWithMoreTime == timeRemaining2)
+                        {
+                            //labCheck2
+                            labBuildOrder[(string)labCheck2].Add(normalBuilds.ElementAt(i));
+                            shiftsRemainingPerLab[indexToCheck2] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                        }
+                        else if (labWithMoreTime == timeRemaining3)
+                        {
+                            //labCheck3
+                            labBuildOrder[(string)labCheck3].Add(normalBuilds.ElementAt(i));
+                            shiftsRemainingPerLab[indexToCheck3] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                        }
+                        else
+                        {
+                            //labCheck4
+                            labBuildOrder[(string)labCheck4].Add(normalBuilds.ElementAt(i));
+                            shiftsRemainingPerLab[indexToCheck4] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                        }
+                        potentialLabWorkTime[indexToCheck1] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                        potentialLabWorkTime[indexToCheck2] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                        potentialLabWorkTime[indexToCheck3] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                        potentialLabWorkTime[indexToCheck4] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                    }
+                }
+
+                /*******************************************************************/
+                /************ CASE FIVE: NORMAL BUILD, 5 LABS AVAILABLE ************/
+                /*******************************************************************/
+                for (int i = 0; i < normalBuilds.Count; i++)
+                {
+                    if ((normalBuilds.ElementAt(i).Count - 4) == 5) //if 6 labs
+                    {
+                        labCheck1 = normalBuilds[i].ElementAt(3); //available lab 1
+                        labCheck2 = normalBuilds[i].ElementAt(4); //available lab 2
+                        labCheck3 = normalBuilds[i].ElementAt(5); //available lab 3
+                        labCheck4 = normalBuilds[i].ElementAt(6); //available lab 4
+                        labCheck5 = normalBuilds[i].ElementAt(7); //available lab 5
+                        string labNumber1 = Regex.Replace((string)labCheck1, "Lab ", string.Empty); //to string
+                        string labNumber2 = Regex.Replace((string)labCheck2, "Lab ", string.Empty); //to string
+                        string labNumber3 = Regex.Replace((string)labCheck3, "Lab ", string.Empty); //to string
+                        string labNumber4 = Regex.Replace((string)labCheck4, "Lab ", string.Empty); //to string
+                        string labNumber5 = Regex.Replace((string)labCheck5, "Lab ", string.Empty); //to string
+                        int indexToCheck1 = int.Parse(labNumber1) - 1; //converts to int and gets the index of shiftsRemainingPerLab for first available lab
+                        int indexToCheck2 = int.Parse(labNumber2) - 1; //converts to int and gets the index of shiftsRemainingPerLab for next available lab
+                        int indexToCheck3 = int.Parse(labNumber3) - 1; //converts to int and gets the index of shiftsRemainingPerLab for next available lab
+                        int indexToCheck4 = int.Parse(labNumber4) - 1; //converts to int and gets the index of shiftsRemainingPerLab for next available lab
+                        int indexToCheck5 = int.Parse(labNumber5) - 1; //converts to int and gets the index of shiftsRemainingPerLab for next available lab
+                        int timeRemaining1 = shiftsRemainingPerLab[indexToCheck1]; //gives shifts remaining in this lab
+                        int timeRemaining2 = shiftsRemainingPerLab[indexToCheck2]; //gives shifts remaining in next lab
+                        int timeRemaining3 = shiftsRemainingPerLab[indexToCheck3]; //gives shifts remaining in next lab
+                        int timeRemaining4 = shiftsRemainingPerLab[indexToCheck4]; //gives shifts remaining in next lab
+                        int timeRemaining5 = shiftsRemainingPerLab[indexToCheck5]; //gives shifts remaining in next lab
+                        int labWithMoreTime = MoreMath.Max(timeRemaining1, timeRemaining2, timeRemaining3, timeRemaining4, timeRemaining5);
+                        if (labWithMoreTime == timeRemaining1)
+                        {
+                            //labCheck1
+                            labBuildOrder[(string)labCheck1].Add(normalBuilds.ElementAt(i));
+                            shiftsRemainingPerLab[indexToCheck1] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                        }
+                        else if (labWithMoreTime == timeRemaining2)
+                        {
+                            //labCheck2
+                            labBuildOrder[(string)labCheck2].Add(normalBuilds.ElementAt(i));
+                            shiftsRemainingPerLab[indexToCheck2] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                        }
+                        else if (labWithMoreTime == timeRemaining3)
+                        {
+                            //labCheck3
+                            labBuildOrder[(string)labCheck3].Add(normalBuilds.ElementAt(i));
+                            shiftsRemainingPerLab[indexToCheck3] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                        }
+                        else if (labWithMoreTime == timeRemaining4)
+                        {
+                            //labCheck4
+                            labBuildOrder[(string)labCheck4].Add(normalBuilds.ElementAt(i));
+                            shiftsRemainingPerLab[indexToCheck4] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                        }
+                        else
+                        {
+                            //labCheck5
+                            labBuildOrder[(string)labCheck5].Add(normalBuilds.ElementAt(i));
+
+                        }
+                        potentialLabWorkTime[indexToCheck1] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                        potentialLabWorkTime[indexToCheck2] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                        potentialLabWorkTime[indexToCheck3] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                        potentialLabWorkTime[indexToCheck4] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                        potentialLabWorkTime[indexToCheck5] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                    }
+                }
+
+                /*******************************************************************/
+                /************ CASE SIX: NORMAL BUILD, 6 LABS AVAILABLE *************/
+                /*******************************************************************/
+                for (int i = 0; i < normalBuilds.Count; i++)
+                {
+                    if ((normalBuilds.ElementAt(i).Count - 4) == 6) //if 6 labs
+                    {
+                        labCheck1 = normalBuilds[i].ElementAt(3); //available lab 1
+                        labCheck2 = normalBuilds[i].ElementAt(4); //available lab 2
+                        labCheck3 = normalBuilds[i].ElementAt(5); //available lab 3
+                        labCheck4 = normalBuilds[i].ElementAt(6); //available lab 4
+                        labCheck5 = normalBuilds[i].ElementAt(7); //available lab 5
+                        labCheck6 = normalBuilds[i].ElementAt(8); //available lab 6
+                        string labNumber1 = Regex.Replace((string)labCheck1, "Lab ", string.Empty); //to string
+                        string labNumber2 = Regex.Replace((string)labCheck2, "Lab ", string.Empty); //to string
+                        string labNumber3 = Regex.Replace((string)labCheck3, "Lab ", string.Empty); //to string
+                        string labNumber4 = Regex.Replace((string)labCheck4, "Lab ", string.Empty); //to string
+                        string labNumber5 = Regex.Replace((string)labCheck5, "Lab ", string.Empty); //to string
+                        string labNumber6 = Regex.Replace((string)labCheck6, "Lab ", string.Empty); //to string
+                        int indexToCheck1 = int.Parse(labNumber1) - 1; //converts to int and gets the index of shiftsRemainingPerLab for first available lab
+                        int indexToCheck2 = int.Parse(labNumber2) - 1; //converts to int and gets the index of shiftsRemainingPerLab for next available lab
+                        int indexToCheck3 = int.Parse(labNumber3) - 1; //converts to int and gets the index of shiftsRemainingPerLab for next available lab
+                        int indexToCheck4 = int.Parse(labNumber4) - 1; //converts to int and gets the index of shiftsRemainingPerLab for next available lab
+                        int indexToCheck5 = int.Parse(labNumber5) - 1; //converts to int and gets the index of shiftsRemainingPerLab for next available lab
+                        int indexToCheck6 = int.Parse(labNumber6) - 1; //converts to int and gets the index of shiftsRemainingPerLab for next available lab
+                        int timeRemaining1 = shiftsRemainingPerLab[indexToCheck1]; //gives shifts remaining in this lab
+                        int timeRemaining2 = shiftsRemainingPerLab[indexToCheck2]; //gives shifts remaining in next lab
+                        int timeRemaining3 = shiftsRemainingPerLab[indexToCheck3]; //gives shifts remaining in next lab
+                        int timeRemaining4 = shiftsRemainingPerLab[indexToCheck4]; //gives shifts remaining in next lab
+                        int timeRemaining5 = shiftsRemainingPerLab[indexToCheck5]; //gives shifts remaining in next lab
+                        int timeRemaining6 = shiftsRemainingPerLab[indexToCheck6]; //gives shifts remaining in next lab
+                        int labWithMoreTime = MoreMath.Max(timeRemaining1, timeRemaining2, timeRemaining3, timeRemaining4, timeRemaining5, timeRemaining6);
+                        if (labWithMoreTime == timeRemaining1)
+                        {
+                            //labCheck1
+                            labBuildOrder[(string)labCheck1].Add(normalBuilds.ElementAt(i));
+                            shiftsRemainingPerLab[indexToCheck1] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                        }
+                        else if (labWithMoreTime == timeRemaining2)
+                        {
+                            //labCheck2
+                            labBuildOrder[(string)labCheck2].Add(normalBuilds.ElementAt(i));
+                            shiftsRemainingPerLab[indexToCheck2] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                        }
+                        else if (labWithMoreTime == timeRemaining3)
+                        {
+                            //labCheck3
+                            labBuildOrder[(string)labCheck3].Add(normalBuilds.ElementAt(i));
+                            shiftsRemainingPerLab[indexToCheck3] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                        }
+                        else if (labWithMoreTime == timeRemaining4)
+                        {
+                            //labCheck4
+                            labBuildOrder[(string)labCheck4].Add(normalBuilds.ElementAt(i));
+                            shiftsRemainingPerLab[indexToCheck4] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                        }
+                        else if (labWithMoreTime == timeRemaining5)
+                        {
+                            //labCheck5
+                            labBuildOrder[(string)labCheck5].Add(normalBuilds.ElementAt(i));
+                            shiftsRemainingPerLab[indexToCheck5] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                        }
+                        else
+                        {
+                            //labCheck6
+                            labBuildOrder[(string)labCheck6].Add(normalBuilds.ElementAt(i));
+                            shiftsRemainingPerLab[indexToCheck6] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                        }
+                        potentialLabWorkTime[indexToCheck1] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                        potentialLabWorkTime[indexToCheck2] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                        potentialLabWorkTime[indexToCheck3] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                        potentialLabWorkTime[indexToCheck4] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                        potentialLabWorkTime[indexToCheck5] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                        potentialLabWorkTime[indexToCheck6] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                    }
+                }
+
+                /*******************************************************************/
+                /**************** CASE SEVEN: NORMAL BUILD, ANY LAB ****************/
+                /*******************************************************************/
+                for (int i = 0; i < normalBuilds.Count; i++)
+                {
+                    if (((normalBuilds.ElementAt(i).Count - 4) == 1) && (normalBuilds.ElementAt(i).Contains("All Labs"))) //if priority build has only one lab it can be worked, add it to that lab's queue to be scheduled
+                    {
+                        int indexOfMax = shiftsRemainingPerLab.IndexOf(shiftsRemainingPerLab.Max());
+                        string labName = "Lab " + (indexOfMax + 1);
+                        labBuildOrder[labName].Add(normalBuilds.ElementAt(i));
+                        shiftsRemainingPerLab[indexOfMax] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                        potentialLabWorkTime[indexOfMax] -= (int)normalBuilds[i].ElementAt(1) + (int)normalBuilds[i].ElementAt(2);
+                    }
+                }
 
 
-
-                //placing labs into schedule algorithm
-
-
+                /*********************************************************************************************************************/
                 /*********************************************************************************************************************/
                 //                                             SCHEDULE PREPARATION                                                  //
                 /*********************************************************************************************************************/
-                
+                /*********************************************************************************************************************/
+
                 // PREP BUILD 1
                 for (int i = 0; i < labOneBuildOrder.Count; i++) //finding labs for priority builds
                 {
@@ -605,48 +933,5 @@ namespace WindowsFormsApp1
                 createdSchedule.ShowDialog();
             }
         }
-        public bool Export<T>(List<T> list, string file, string sheetName)
-        {
-            bool exported = false;
-            using (IXLWorkbook workbook = new XLWorkbook())
-            {
-                workbook.AddWorksheet(sheetName).FirstCell().InsertTable<T>(list, false);
-                workbook.SaveAs(file);
-                exported = true;
-            }
-                return exported;
-        }
-
-        protected virtual bool IsFileLocked(FileInfo file)
-        {
-            try
-            {
-                using (FileStream stream = file.Open(FileMode.Open, FileAccess.Read, FileShare.None))
-                {
-                    stream.Close();
-                }
-            }
-            catch (IOException)
-            {
-                //the file is unavailable because it is:
-                //still being written to
-                //or being processed by another thread
-                //or does not exist (has already been processed)
-                return true;
-            }
-
-            //file is not locked
-            return false;
-        }
-
-        
-       /*List<object> addList ()
-        {
-            foreach (object scheduleData in FormBuilds.buildData)
-            {
-
-            }
-        }*/
-
     }
 }
