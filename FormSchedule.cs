@@ -25,6 +25,12 @@ namespace WindowsFormsApp1
         private static List<List<object>> labThreeList = new List<List<object>>();
         private static List<List<object>> labFourList = new List<List<object>>();
         private static List<List<object>> labFiveList = new List<List<object>>();
+
+        private void loadShiftBox_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private static List<List<object>> labSixList = new List<List<object>>();
         private static List<List<object>> labSevenList = new List<List<object>>();
         public FormSchedule()
@@ -65,6 +71,10 @@ namespace WindowsFormsApp1
                 labSixTable,
                 labSevenTable
             });
+
+            loadShiftBox.BackColor = Color.LightCoral;
+            workShiftBox.BackColor = Color.LightSkyBlue;
+
             //format schedule tables
             for (int i = 0; i < labs.Count; i++)
             {
@@ -103,12 +113,26 @@ namespace WindowsFormsApp1
                 labOneTime = FormPreliminaryInfo.daysPerWeek * 4;
 
             //add all lab one labels to the list
+
             for (int i = 0; i < (int)labOneList.Count; i++)
             {
-                for(int j = 0; j < (int)labOneList[i].ElementAt(1) + (int)labOneList[i].ElementAt(2); j++)
+                for (int j = 0; j < (int)labOneList[i].ElementAt(1); j++)
                 {
-                    if (j < labOneTime)
-                        label.Add(new Label() { Text = (string)labOneList[i].ElementAt(0), Anchor = AnchorStyles.None, TextAlign = ContentAlignment.MiddleCenter });
+                    if (labOneTime > 0)
+                    {
+                        label.Add(new Label() { Text = (string)labOneList[i].ElementAt(0), Anchor = AnchorStyles.None, TextAlign = ContentAlignment.MiddleCenter, BackColor = Color.LightCoral });
+                        labOneTime -=  1;
+                    }
+                        
+                }
+                for (int j = 0; j < (int)labOneList[i].ElementAt(2); j++)
+                {
+                    if (labOneTime > 0)
+                    {
+                        label.Add(new Label() { Text = (string)labOneList[i].ElementAt(0), Anchor = AnchorStyles.None, TextAlign = ContentAlignment.MiddleCenter, BackColor = Color.LightSkyBlue });
+                        labOneTime -= 1;
+                    }
+                        
                 }
             }
             
@@ -134,10 +158,23 @@ namespace WindowsFormsApp1
             //add all lab one labels to the list
             for (int i = 0; i < (int)labTwoList.Count; i++)
             {
-                for (int j = 0; j < (int)labTwoList[i].ElementAt(1) + (int)labTwoList[i].ElementAt(2); j++)
+                for (int j = 0; j < (int)labTwoList[i].ElementAt(1); j++)
                 {
-                    if (j < labTwoTime)
-                        label.Add(new Label() { Text = (string)labTwoList[i].ElementAt(0), Anchor = AnchorStyles.None, TextAlign = ContentAlignment.MiddleCenter });
+                    if (labTwoTime > 0)
+                    {
+                        label.Add(new Label() { Text = (string)labTwoList[i].ElementAt(0), Anchor = AnchorStyles.None, TextAlign = ContentAlignment.MiddleCenter, BackColor = Color.LightCoral });
+                        labTwoTime -= 1;
+                    }  
+                }
+                for (int j = 0; j < (int)labTwoList[i].ElementAt(2); j++)
+                {
+                    if (labTwoTime > 0)
+                    {
+                        label.Add(new Label() { Text = (string)labTwoList[i].ElementAt(0), Anchor = AnchorStyles.None, TextAlign = ContentAlignment.MiddleCenter, BackColor = Color.LightSkyBlue });
+                        labTwoTime -= 1;
+                    }
+                        
+
                 }
             }
 
@@ -163,10 +200,21 @@ namespace WindowsFormsApp1
             //add all lab one labels to the list
             for (int i = 0; i < (int)labThreeList.Count; i++)
             {
-                for (int j = 0; j < (int)labThreeList[i].ElementAt(1) + (int)labThreeList[i].ElementAt(2); j++)
+                for (int j = 0; j < (int)labThreeList[i].ElementAt(1); j++)
                 {
-                    if (j < labThreeTime)
-                        label.Add(new Label() { Text = (string)labThreeList[i].ElementAt(0), Anchor = AnchorStyles.None, TextAlign = ContentAlignment.MiddleCenter });
+                    if (labThreeTime > 0)
+                    {
+                        label.Add(new Label() { Text = (string)labThreeList[i].ElementAt(0), Anchor = AnchorStyles.None, TextAlign = ContentAlignment.MiddleCenter, BackColor = Color.LightCoral });
+                        labThreeTime -= 1;
+                    }
+                }
+                for (int j = 0; j < (int)labThreeList[i].ElementAt(2); j++)
+                {
+                    if (labThreeTime > 0)
+                    {
+                        label.Add(new Label() { Text = (string)labThreeList[i].ElementAt(0), Anchor = AnchorStyles.None, TextAlign = ContentAlignment.MiddleCenter, BackColor = Color.LightSkyBlue });
+                        labThreeTime -= 1;
+                    }
                 }
             }
 
@@ -192,10 +240,21 @@ namespace WindowsFormsApp1
             //add all lab one labels to the list
             for (int i = 0; i < (int)labFourList.Count; i++)
             {
-                for (int j = 0; j < (int)labFourList[i].ElementAt(1) + (int)labFourList[i].ElementAt(2); j++)
+                for (int j = 0; j < (int)labFourList[i].ElementAt(1); j++)
                 {
-                    if (j < labFourTime)
-                        label.Add(new Label() { Text = (string)labFourList[i].ElementAt(0), Anchor = AnchorStyles.None, TextAlign = ContentAlignment.MiddleCenter });
+                    if (labFourTime > 0)
+                    {
+                        label.Add(new Label() { Text = (string)labFourList[i].ElementAt(0), Anchor = AnchorStyles.None, TextAlign = ContentAlignment.MiddleCenter, BackColor = Color.LightCoral });
+                        labFourTime -= 1;
+                    }
+                }
+                for (int j = 0; j < (int)labFourList[i].ElementAt(2); j++)
+                {
+                    if (labFourTime > 0)
+                    {
+                        label.Add(new Label() { Text = (string)labFourList[i].ElementAt(0), Anchor = AnchorStyles.None, TextAlign = ContentAlignment.MiddleCenter, BackColor = Color.LightSkyBlue });
+                        labFourTime -= 1;
+                    }
                 }
             }
 
@@ -221,10 +280,22 @@ namespace WindowsFormsApp1
             //add all lab one labels to the list
             for (int i = 0; i < (int)labFiveList.Count; i++)
             {
-                for (int j = 0; j < (int)labFiveList[i].ElementAt(1) + (int)labFiveList[i].ElementAt(2); j++)
+                for (int j = 0; j < (int)labFiveList[i].ElementAt(1); j++)
                 {
-                    if (j < labFiveTime)
-                        label.Add(new Label() { Text = (string)labFiveList[i].ElementAt(0), Anchor = AnchorStyles.None, TextAlign = ContentAlignment.MiddleCenter });
+                    if (labFiveTime > 0)
+                    {
+                        label.Add(new Label() { Text = (string)labFiveList[i].ElementAt(0), Anchor = AnchorStyles.None, TextAlign = ContentAlignment.MiddleCenter, BackColor = Color.LightCoral });
+                        labFiveTime -= 1;
+                    }
+                }
+                for (int j = 0; j < (int)labFiveList[i].ElementAt(2); j++)
+                {
+                    if (labFiveTime > 0)
+                    {
+                        label.Add(new Label() { Text = (string)labFiveList[i].ElementAt(0), Anchor = AnchorStyles.None, TextAlign = ContentAlignment.MiddleCenter, BackColor = Color.LightSkyBlue });
+                        labFiveTime -= 1;
+                    }
+                        
                 }
             }
 
@@ -250,10 +321,22 @@ namespace WindowsFormsApp1
             //add all lab one labels to the list
             for (int i = 0; i < (int)labSixList.Count; i++)
             {
-                for (int j = 0; j < (int)labSixList[i].ElementAt(1) + (int)labSixList[i].ElementAt(2); j++)
+                for (int j = 0; j < (int)labSixList[i].ElementAt(1); j++)
                 {
-                    if (j < labSixTime)
-                        label.Add(new Label() { Text = (string)labSixList[i].ElementAt(0), Anchor = AnchorStyles.None, TextAlign = ContentAlignment.MiddleCenter });
+                    if (labSixTime > 0)
+                    {
+                        label.Add(new Label() { Text = (string)labSixList[i].ElementAt(0), Anchor = AnchorStyles.None, TextAlign = ContentAlignment.MiddleCenter, BackColor = Color.LightCoral });
+                        labSixTime -= 1;
+                    }
+                        
+                }
+                for (int j = 0; j < (int)labSixList[i].ElementAt(2); j++)
+                {
+                    if (labSixTime > 0)
+                    {
+                        label.Add(new Label() { Text = (string)labSixList[i].ElementAt(0), Anchor = AnchorStyles.None, TextAlign = ContentAlignment.MiddleCenter, BackColor = Color.LightSkyBlue });
+                        labSixTime -= 1;
+                    }
                 }
             }
 
@@ -279,10 +362,22 @@ namespace WindowsFormsApp1
             //add all lab one labels to the list
             for (int i = 0; i < (int)labSevenList.Count; i++)
             {
-                for (int j = 0; j < (int)labSevenList[i].ElementAt(1) + (int)labSevenList[i].ElementAt(2); j++)
+                for (int j = 0; j < (int)labSevenList[i].ElementAt(1); j++)
                 {
-                    if (j < labSevenTime)
-                        label.Add(new Label() { Text = (string)labSevenList[i].ElementAt(0), Anchor = AnchorStyles.None, TextAlign = ContentAlignment.MiddleCenter });
+                    if (labSevenTime > 0)
+                    {
+                        label.Add(new Label() { Text = (string)labSevenList[i].ElementAt(0), Anchor = AnchorStyles.None, TextAlign = ContentAlignment.MiddleCenter, BackColor = Color.LightCoral });
+                        labSevenTime -= 1;
+                    }
+                        
+                }
+                for (int j = 0; j < (int)labSevenList[i].ElementAt(2); j++)
+                {
+                    if (labSevenTime > 0)
+                    {
+                        label.Add(new Label() { Text = (string)labSevenList[i].ElementAt(0), Anchor = AnchorStyles.None, TextAlign = ContentAlignment.MiddleCenter, BackColor = Color.LightSkyBlue });
+                        labSevenTime -= 1;
+                    }
                 }
             }
 
