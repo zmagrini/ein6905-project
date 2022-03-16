@@ -31,6 +31,11 @@ namespace WindowsFormsApp1
 
         }
 
+        private void FormSchedule_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
         private static List<List<object>> labSixList = new List<List<object>>();
         private static List<List<object>> labSevenList = new List<List<object>>();
         public FormSchedule()

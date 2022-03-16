@@ -79,7 +79,7 @@ namespace WindowsFormsApp1
             this.buildInfo.Name = "buildInfo";
             this.buildInfo.Size = new System.Drawing.Size(207, 25);
             this.buildInfo.TabIndex = 3;
-            this.buildInfo.Text = "BUILD " + (FormPreliminaryInfo.currentBuild + 1) + " INFORMATION";
+            this.buildInfo.Text = "BUILD "+ (FormPreliminaryInfo.currentBuild + 1) + " INFORMATION";
             // 
             // workShiftsBox
             // 
@@ -165,6 +165,7 @@ namespace WindowsFormsApp1
             this.buildNameBox.Name = "buildNameBox";
             this.buildNameBox.Size = new System.Drawing.Size(100, 23);
             this.buildNameBox.TabIndex = 13;
+            this.buildNameBox.TextChanged += new System.EventHandler(this.buildNameBox_TextChanged);
             // 
             // buildNameLabel
             // 
@@ -195,7 +196,7 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.loadTimeLabel);
             this.Name = "FormBuilds";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormBuilds";
+            this.Text = "Build Information";
             this.Load += new System.EventHandler(this.FormBuilds_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

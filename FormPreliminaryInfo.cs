@@ -20,6 +20,7 @@ namespace WindowsFormsApp1
 {
     public partial class FormPreliminaryInfo : Form
     {
+        UpdatedBuilds frm;
         private List<string> priorityLabs = new List<string>();
         public static int daysPerWeek = 0;
         private static int labOnePossibleTime = 0, labTwoPossibleTime = 0, labThreePossibleTime = 0, labFourPossibleTime = 0,
@@ -39,7 +40,7 @@ namespace WindowsFormsApp1
 
         private void FormPreliminaryInfo_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void numBuildsLabel_Click(object sender, EventArgs e)
@@ -54,6 +55,47 @@ namespace WindowsFormsApp1
 
         public static List<int> shiftsRemainingPerLab = new List<int>();
         public static List<List<object>> labOnePrep = new List<List<object>>();
+
+        private void labsOpenLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labsOpenBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numBuildsBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void titleLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormPreliminaryInfo_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
         public static List<List<object>> labTwoPrep = new List<List<object>>();
         public static List<List<object>> labThreePrep = new List<List<object>>();
         public static List<List<object>> labFourPrep = new List<List<object>>();
@@ -80,6 +122,7 @@ namespace WindowsFormsApp1
         public FormPreliminaryInfo()
         {
             InitializeComponent();
+            frm = new UpdatedBuilds(this);
         }
 
         private void nextButton_Click(object sender, EventArgs e)
@@ -87,6 +130,17 @@ namespace WindowsFormsApp1
             if (numBuildsBox.SelectedItem == null || labsOpenBox.SelectedItem == null)
             {
                 MessageBox.Show("Error! Must fill all data for the week.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (!Int32.TryParse(numBuildsBox.Text, out int value))
+            {
+                MessageBox.Show("Error! Must only enter a number.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (availableWorkers.Value <= 0)
+            {
+                MessageBox.Show("Error! There must be a valid number of workers for the week (greater than 0)", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
             else
             {
@@ -114,9 +168,14 @@ namespace WindowsFormsApp1
                     daysPerWeek * 4
                 });
                 this.Hide();
-                for (currentBuild = 0; currentBuild < numBuilds; currentBuild++)
+                using (UpdatedBuilds buildInformation = new UpdatedBuilds(this))
                 {
-                    
+                    buildInformation.ShowDialog();
+                }
+                
+                /*for (currentBuild = 0; currentBuild < numBuilds; currentBuild++)
+                {
+
                     try
                     {
                         using (FormBuilds buildPopup = new FormBuilds())
@@ -129,8 +188,11 @@ namespace WindowsFormsApp1
                     {
                         MessageBox.Show(ex.Message);
                     } 
-                }
-                listOfBuilds = FormBuilds.allBuilds; //list of all builds
+                }*/
+                //listOfBuilds = FormBuilds.allBuilds; //list of all builds
+                listOfBuilds = UpdatedBuilds.allSoftwareBuilds;
+                if (listOfBuilds.Count == 0)
+                    return;
                 if ((FormBuilds.totalWorkTimePerBuild * 6) / availableWorkers.Value > 40)
                 {
                     DialogResult answer = MessageBox.Show("Not enough workers to cover all shifts. Allow overtime?", "Overtime Notice", MessageBoxButtons.YesNo, MessageBoxIcon.Error);

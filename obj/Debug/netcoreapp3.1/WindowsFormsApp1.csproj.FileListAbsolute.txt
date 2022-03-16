@@ -43,3 +43,4 @@ D:\UF OEM\Project\oem-project\WindowsFormsApp1\obj\Debug\netcoreapp3.1\WindowsFo
 D:\UF OEM\Project\oem-project\WindowsFormsApp1\obj\Debug\netcoreapp3.1\WindowsFormsApp1.pdb
 D:\UF OEM\Project\oem-project\WindowsFormsApp1\obj\Debug\netcoreapp3.1\WindowsFormsApp1.genruntimeconfig.cache
 D:\UF OEM\Project\oem-project\WindowsFormsApp1\obj\Debug\netcoreapp3.1\WindowsFormsApp1.Properties.Resources.resources
+D:\UF OEM\Project\oem-project\WindowsFormsApp1\obj\Debug\netcoreapp3.1\WindowsFormsApp1.UpdatedBuilds.resources

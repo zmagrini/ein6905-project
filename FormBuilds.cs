@@ -16,6 +16,7 @@ namespace WindowsFormsApp1
         public static string buildName;
         public static int totalWorkTimePerBuild;
         public static List<object> buildData = new List<object>();
+        int check;
 
         public FormBuilds()
         {
@@ -31,19 +32,63 @@ namespace WindowsFormsApp1
 
         private void nextBuildButton_Click(object sender, EventArgs e)
         {
-            
-            if (int.Parse(loadTimeTextbox.Text) < 1 || int.Parse(loadTimeTextbox.Text) > 20 || loadTimeTextbox.Text == null)
+
+            if (loadTimeTextbox.Text == "")
             {
-                MessageBox.Show("Error! Build time must contain a valid response (1-20)!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error! Please enter the required data to continue!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (int.TryParse(loadTimeTextbox.Text, out check) == false)
+            {
+                MessageBox.Show("Error! Work shifts must contain only numeric values (1-30)!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (int.Parse(loadTimeTextbox.Text) < 0 || int.Parse(loadTimeTextbox.Text) > 20)
+            {
+                MessageBox.Show("Error! Load shifts must contain a valid response (0-20)!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (workShiftsBox.Text == "")
+            {
+                MessageBox.Show("Error! Please enter the required data to continue!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (int.TryParse(workShiftsBox.Text, out check) == false)
+            { 
+                MessageBox.Show("Error! Work shifts must contain only numeric values (1-30)!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (int.Parse(workShiftsBox.Text) < 1 || int.Parse(workShiftsBox.Text) > 30)
+            {
+                MessageBox.Show("Error! Work shifts must contain a valid response (1-30)!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
             if (priorityButton.Checked == false && priorityNo.Checked == false)
             {
                 MessageBox.Show("Error! Please choose whether this build is a priority build.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
             if (buildNameBox.Text == null)
             {
                 MessageBox.Show("Error! Please input build name.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+            if (checkedListBox1.CheckedItems.Count == 0)
+            {
+                MessageBox.Show("Error! A lab must be selected.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (checkedListBox1.CheckedItems.Count > 1 && checkedListBox1.SelectedItems.Contains("All Labs"))
+            {
+                MessageBox.Show("Error! 'All Labs' cannot be selected with other options.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (priorityButton.Checked == false && priorityNo.Checked == false)
+            {
+                MessageBox.Show("Error! Please choose whether this build is a priority or not.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             //ALL DATA IS GONE AFTER EACH BUILD
 
             buildData.Add(this.buildNameBox.Text); 
@@ -75,6 +120,11 @@ namespace WindowsFormsApp1
         }
 
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buildNameBox_TextChanged(object sender, EventArgs e)
         {
 
         }

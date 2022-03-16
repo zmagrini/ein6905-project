@@ -45,10 +45,10 @@ namespace WindowsFormsApp1
             this.labSevenLabel = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.legendBox = new System.Windows.Forms.GroupBox();
+            this.workShiftsBox = new System.Windows.Forms.Label();
+            this.loadShiftsBox = new System.Windows.Forms.Label();
             this.workShiftBox = new System.Windows.Forms.PictureBox();
             this.loadShiftBox = new System.Windows.Forms.PictureBox();
-            this.loadShiftsBox = new System.Windows.Forms.Label();
-            this.workShiftsBox = new System.Windows.Forms.Label();
             this.legendBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.workShiftBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loadShiftBox)).BeginInit();
@@ -315,6 +315,24 @@ namespace WindowsFormsApp1
             this.legendBox.TabStop = false;
             this.legendBox.Text = "Legend";
             // 
+            // workShiftsBox
+            // 
+            this.workShiftsBox.AutoSize = true;
+            this.workShiftsBox.Location = new System.Drawing.Point(53, 58);
+            this.workShiftsBox.Name = "workShiftsBox";
+            this.workShiftsBox.Size = new System.Drawing.Size(67, 15);
+            this.workShiftsBox.TabIndex = 3;
+            this.workShiftsBox.Text = "Work Shifts";
+            // 
+            // loadShiftsBox
+            // 
+            this.loadShiftsBox.AutoSize = true;
+            this.loadShiftsBox.Location = new System.Drawing.Point(53, 27);
+            this.loadShiftsBox.Name = "loadShiftsBox";
+            this.loadShiftsBox.Size = new System.Drawing.Size(65, 15);
+            this.loadShiftsBox.TabIndex = 2;
+            this.loadShiftsBox.Text = "Load Shifts";
+            // 
             // workShiftBox
             // 
             this.workShiftBox.Location = new System.Drawing.Point(18, 53);
@@ -331,24 +349,6 @@ namespace WindowsFormsApp1
             this.loadShiftBox.TabIndex = 0;
             this.loadShiftBox.TabStop = false;
             this.loadShiftBox.Click += new System.EventHandler(this.loadShiftBox_Click);
-            // 
-            // loadShiftsBox
-            // 
-            this.loadShiftsBox.AutoSize = true;
-            this.loadShiftsBox.Location = new System.Drawing.Point(53, 27);
-            this.loadShiftsBox.Name = "loadShiftsBox";
-            this.loadShiftsBox.Size = new System.Drawing.Size(65, 15);
-            this.loadShiftsBox.TabIndex = 2;
-            this.loadShiftsBox.Text = "Load Shifts";
-            // 
-            // workShiftsBox
-            // 
-            this.workShiftsBox.AutoSize = true;
-            this.workShiftsBox.Location = new System.Drawing.Point(53, 58);
-            this.workShiftsBox.Name = "workShiftsBox";
-            this.workShiftsBox.Size = new System.Drawing.Size(67, 15);
-            this.workShiftsBox.TabIndex = 3;
-            this.workShiftsBox.Text = "Work Shifts";
             // 
             // FormSchedule
             // 
@@ -373,6 +373,7 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.labOneTable);
             this.Name = "FormSchedule";
             this.Text = "Schedule";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormSchedule_FormClosing);
             this.Load += new System.EventHandler(this.FormSchedule_Load);
             this.legendBox.ResumeLayout(false);
             this.legendBox.PerformLayout();

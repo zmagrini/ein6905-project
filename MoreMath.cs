@@ -16,7 +16,7 @@ namespace WindowsFormsApp1
             if (x == y)
             {
                 int minPotential = Math.Min(labOnePotential, labTwoPotential);
-                if (x == minPotential)
+                if (labOnePotential == minPotential)
                     return 1;
                 else
                     return 2;
