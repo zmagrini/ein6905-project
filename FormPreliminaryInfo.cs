@@ -93,7 +93,10 @@ namespace WindowsFormsApp1
 
         private void FormPreliminaryInfo_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                Application.Exit();
+            }
         }
 
         public static List<List<object>> labTwoPrep = new List<List<object>>();

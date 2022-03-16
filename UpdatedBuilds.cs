@@ -251,7 +251,10 @@ namespace WindowsFormsApp1
 
         private void UpdatedBuilds_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                Application.Exit();
+            }
         }
     }
 }
