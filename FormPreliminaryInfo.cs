@@ -27,6 +27,7 @@ namespace WindowsFormsApp1
             labFivePossibleTime = 0, labSixPossibleTime = 0, labSevenPossibleTime = 0;
         public static int currentBuild = 0, totalLab1TimeUsed = 0, totalLab2TimeUsed = 0, totalLab3TimeUsed = 0, totalLab4TimeUsed = 0, totalLab5TimeUsed = 0,
             totalLab6TimeUsed = 0, totalLab7TimeUsed = 0;
+        bool appRestarted = false;
         List<int> potentialLabWorkTime = new List<int>();
         private List<List<object>> priorityBuilds = new List<List<object>>();
         private List<List<object>> normalBuilds = new List<List<object>>();
@@ -176,33 +177,16 @@ namespace WindowsFormsApp1
                     buildInformation.ShowDialog();
                 }
                 
-                /*for (currentBuild = 0; currentBuild < numBuilds; currentBuild++)
-                {
-
-                    try
-                    {
-                        using (FormBuilds buildPopup = new FormBuilds())
-                        {
-                            buildPopup.ShowDialog();
-                        }
-                    }
-
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    } 
-                }*/
-                //listOfBuilds = FormBuilds.allBuilds; //list of all builds
                 listOfBuilds = UpdatedBuilds.allSoftwareBuilds;
                 if (listOfBuilds.Count == 0)
                     return;
-                if ((FormBuilds.totalWorkTimePerBuild * 6) / availableWorkers.Value > 40)
+                if ((UpdatedBuilds.totalWorkTimePerBuild * 6) / availableWorkers.Value > 40)
                 {
                     DialogResult answer = MessageBox.Show("Not enough workers to cover all shifts. Allow overtime?", "Overtime Notice", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
                     if (answer == DialogResult.No)
                     {
                         MessageBox.Show("Optimal schedule cannot be found. More workers are needed to cover all shifts.", "Operation Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        return;
+                        Environment.Exit(-1);
                     }
                  
                 }

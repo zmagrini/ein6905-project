@@ -29,6 +29,7 @@ namespace WindowsFormsApp1
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.build1Group = new System.Windows.Forms.GroupBox();
             this.noButton1 = new System.Windows.Forms.RadioButton();
             this.yesButton1 = new System.Windows.Forms.RadioButton();
@@ -271,6 +272,7 @@ namespace WindowsFormsApp1
             this.buildName15Box = new System.Windows.Forms.TextBox();
             this.generateScheduleButton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.build1Group.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.workShifts1UpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loadShifts1UpDown)).BeginInit();
@@ -384,6 +386,7 @@ namespace WindowsFormsApp1
             this.priorityBuildLabel.Size = new System.Drawing.Size(80, 15);
             this.priorityBuildLabel.TabIndex = 8;
             this.priorityBuildLabel.Text = "Priority Build?";
+            this.toolTip1.SetToolTip(this.priorityBuildLabel, "Choose to set this build as a scheduling priority.");
             // 
             // availableLabsLabel
             // 
@@ -393,6 +396,8 @@ namespace WindowsFormsApp1
             this.availableLabsLabel.Size = new System.Drawing.Size(82, 15);
             this.availableLabsLabel.TabIndex = 7;
             this.availableLabsLabel.Text = "Available Labs";
+            this.toolTip1.SetToolTip(this.availableLabsLabel, "Choose which lab(s) this can be worked. If Choosing \"All Labs\", do not select any" +
+        " other lab.");
             // 
             // build1LabsBox
             // 
@@ -429,6 +434,8 @@ namespace WindowsFormsApp1
             this.workShifts1Label.Size = new System.Drawing.Size(67, 15);
             this.workShifts1Label.TabIndex = 4;
             this.workShifts1Label.Text = "Work Shifts";
+            this.toolTip1.SetToolTip(this.workShifts1Label, "This is the amount of time it will take to complete the work on this software bui" +
+        "ld (after its loaded)");
             // 
             // loadShifts1Label
             // 
@@ -438,6 +445,9 @@ namespace WindowsFormsApp1
             this.loadShifts1Label.Size = new System.Drawing.Size(65, 15);
             this.loadShifts1Label.TabIndex = 3;
             this.loadShifts1Label.Text = "Load Shifts";
+            this.toolTip1.SetToolTip(this.loadShifts1Label, "This is the approximate number of shifts it takes to load the software build you " +
+        "are scheduling.");
+            this.loadShifts1Label.Click += new System.EventHandler(this.loadShifts1Label_Click);
             // 
             // loadShifts1UpDown
             // 
@@ -454,6 +464,7 @@ namespace WindowsFormsApp1
             this.buildName1Label.Size = new System.Drawing.Size(69, 15);
             this.buildName1Label.TabIndex = 1;
             this.buildName1Label.Text = "Build Name";
+            this.toolTip1.SetToolTip(this.buildName1Label, "This is the name/version of software build you\'d like to schedule.");
             // 
             // build1NameBox
             // 
@@ -3299,5 +3310,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.Button generateScheduleButton;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

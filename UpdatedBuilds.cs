@@ -14,6 +14,7 @@ namespace WindowsFormsApp1
         FormPreliminaryInfo frm;
         public static List<object> swBuildData = new List<object>();
         public static List<List<object>> allSoftwareBuilds = new List<List<object>>();
+        public static int totalWorkTimePerBuild;
         public UpdatedBuilds(FormPreliminaryInfo fr)
         {
             InitializeComponent();
@@ -230,6 +231,7 @@ namespace WindowsFormsApp1
                 swBuildData.Add(buildNames[i].Text);
                 swBuildData.Add((int)loadShifts[i].Value);
                 swBuildData.Add((int)workShifts[i].Value);
+                totalWorkTimePerBuild = + ((int)loadShifts[i].Value + (int)workShifts[i].Value);
                 foreach (string item in labsChosen[i].CheckedItems)
                     swBuildData.Add(item);
                 if (priorityButtons[i].Checked == true)
@@ -255,6 +257,11 @@ namespace WindowsFormsApp1
             {
                 Application.Exit();
             }
+        }
+
+        private void loadShifts1Label_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

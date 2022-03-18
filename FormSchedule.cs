@@ -45,6 +45,7 @@ namespace WindowsFormsApp1
             {
                 convertToLabels.Add(new Label() { Text = foo.ToString() });
             }
+           
         }
 
         private void FormSchedule_Load(object sender, EventArgs e)
@@ -410,6 +411,16 @@ namespace WindowsFormsApp1
                 e.Graphics.FillRectangle(Brushes.LightBlue, e.CellBounds);
             if (e.Column == 0)
                 e.Graphics.FillRectangle(Brushes.LightBlue, e.CellBounds);
+            if (FormPreliminaryInfo.daysPerWeek == 4)
+            {
+                if ((e.Column == 5 || e.Column == 6 || e.Column == 7) && (e.Row == 1 || e.Row == 2 || e.Row == 3 || e.Row == 4))
+                    e.Graphics.FillRectangle(Brushes.LightGray, e.CellBounds);
+            }
+            else if (FormPreliminaryInfo.daysPerWeek == 5)
+            {
+                if ((e.Column == 6 || e.Column == 7) && (e.Row == 1 || e.Row == 2 || e.Row == 3 || e.Row == 4))
+                    e.Graphics.FillRectangle(Brushes.LightGray, e.CellBounds);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
