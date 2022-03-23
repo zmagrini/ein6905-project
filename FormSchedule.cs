@@ -355,7 +355,7 @@ namespace WindowsFormsApp1
                         {
                             goto Lab4;
                         }
-                        labs[0].Controls.Add(label[0], column, row);
+                        labs[2].Controls.Add(label[0], column, row);
                         label.RemoveAt(0);
                     }
                 }
@@ -375,7 +375,7 @@ namespace WindowsFormsApp1
                         }
                         if (shiftOneDaysToSchedule > 0)
                         {
-                            labs[1].Controls.Add(label[0], column, row);
+                            labs[2].Controls.Add(label[0], column, row);
                             label.RemoveAt(0);
                         }
                     }
@@ -395,7 +395,7 @@ namespace WindowsFormsApp1
                         {
                             goto Lab4;
                         }
-                        labs[1].Controls.Add(label[0], column, row);
+                        labs[2].Controls.Add(label[0], column, row);
                         label.RemoveAt(0);
                     }
                 }
@@ -411,7 +411,7 @@ namespace WindowsFormsApp1
                         {
                             goto Lab4;
                         }
-                        labs[1].Controls.Add(label[0], column, row);
+                        labs[2].Controls.Add(label[0], column, row);
                         label.RemoveAt(0);
                     }
                 }
@@ -454,7 +454,7 @@ namespace WindowsFormsApp1
                         {
                             goto Lab5;
                         }
-                        labs[0].Controls.Add(label[0], column, row);
+                        labs[3].Controls.Add(label[0], column, row);
                         label.RemoveAt(0);
                     }
                 }
@@ -474,7 +474,7 @@ namespace WindowsFormsApp1
                         }
                         if (shiftOneDaysToSchedule > 0)
                         {
-                            labs[1].Controls.Add(label[0], column, row);
+                            labs[3].Controls.Add(label[0], column, row);
                             label.RemoveAt(0);
                         }
                     }
@@ -494,7 +494,7 @@ namespace WindowsFormsApp1
                         {
                             goto Lab5;
                         }
-                        labs[1].Controls.Add(label[0], column, row);
+                        labs[3].Controls.Add(label[0], column, row);
                         label.RemoveAt(0);
                     }
                 }
@@ -510,7 +510,7 @@ namespace WindowsFormsApp1
                         {
                             goto Lab5;
                         }
-                        labs[1].Controls.Add(label[0], column, row);
+                        labs[3].Controls.Add(label[0], column, row);
                         label.RemoveAt(0);
                     }
                 }
@@ -554,7 +554,7 @@ namespace WindowsFormsApp1
                         {
                             goto Lab6;
                         }
-                        labs[0].Controls.Add(label[0], column, row);
+                        labs[4].Controls.Add(label[0], column, row);
                         label.RemoveAt(0);
                     }
                 }
@@ -574,7 +574,7 @@ namespace WindowsFormsApp1
                         }
                         if (shiftOneDaysToSchedule > 0)
                         {
-                            labs[1].Controls.Add(label[0], column, row);
+                            labs[4].Controls.Add(label[0], column, row);
                             label.RemoveAt(0);
                         }
                     }
@@ -594,7 +594,7 @@ namespace WindowsFormsApp1
                         {
                             goto Lab6;
                         }
-                        labs[1].Controls.Add(label[0], column, row);
+                        labs[4].Controls.Add(label[0], column, row);
                         label.RemoveAt(0);
                     }
                 }
@@ -610,7 +610,7 @@ namespace WindowsFormsApp1
                         {
                             goto Lab6;
                         }
-                        labs[1].Controls.Add(label[0], column, row);
+                        labs[4].Controls.Add(label[0], column, row);
                         label.RemoveAt(0);
                     }
                 }
@@ -654,7 +654,7 @@ namespace WindowsFormsApp1
                         {
                             goto Lab7;
                         }
-                        labs[0].Controls.Add(label[0], column, row);
+                        labs[5].Controls.Add(label[0], column, row);
                         label.RemoveAt(0);
                     }
                 }
@@ -674,7 +674,7 @@ namespace WindowsFormsApp1
                         }
                         if (shiftOneDaysToSchedule > 0)
                         {
-                            labs[1].Controls.Add(label[0], column, row);
+                            labs[5].Controls.Add(label[0], column, row);
                             label.RemoveAt(0);
                         }
                     }
@@ -694,7 +694,7 @@ namespace WindowsFormsApp1
                         {
                             goto Lab7;
                         }
-                        labs[1].Controls.Add(label[0], column, row);
+                        labs[5].Controls.Add(label[0], column, row);
                         label.RemoveAt(0);
                     }
                 }
@@ -710,7 +710,7 @@ namespace WindowsFormsApp1
                         {
                             goto Lab7;
                         }
-                        labs[1].Controls.Add(label[0], column, row);
+                        labs[5].Controls.Add(label[0], column, row);
                         label.RemoveAt(0);
                     }
                 }
@@ -754,7 +754,7 @@ namespace WindowsFormsApp1
                         {
                             break;
                         }
-                        labs[0].Controls.Add(label[0], column, row);
+                        labs[6].Controls.Add(label[0], column, row);
                         label.RemoveAt(0);
                     }
                 }
@@ -774,7 +774,7 @@ namespace WindowsFormsApp1
                         }
                         if (shiftOneDaysToSchedule > 0)
                         {
-                            labs[1].Controls.Add(label[0], column, row);
+                            labs[6].Controls.Add(label[0], column, row);
                             label.RemoveAt(0);
                         }
                     }
@@ -794,7 +794,7 @@ namespace WindowsFormsApp1
                         {
                             break;
                         }
-                        labs[1].Controls.Add(label[0], column, row);
+                        labs[6].Controls.Add(label[0], column, row);
                         label.RemoveAt(0);
                     }
                 }
@@ -810,7 +810,7 @@ namespace WindowsFormsApp1
                         {
                             break;
                         }
-                        labs[1].Controls.Add(label[0], column, row);
+                        labs[6].Controls.Add(label[0], column, row);
                         label.RemoveAt(0);
                     }
                 }
