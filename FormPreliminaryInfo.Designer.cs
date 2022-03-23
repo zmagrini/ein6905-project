@@ -56,7 +56,6 @@ namespace WindowsFormsApp1
             this.titleLabel.Size = new System.Drawing.Size(344, 39);
             this.titleLabel.TabIndex = 0;
             this.titleLabel.Text = "F35 Lab Schedule Optimization";
-            this.titleLabel.Click += new System.EventHandler(this.titleLabel_Click);
             // 
             // numBuildsLabel
             // 
@@ -68,7 +67,6 @@ namespace WindowsFormsApp1
             this.numBuildsLabel.Size = new System.Drawing.Size(198, 21);
             this.numBuildsLabel.TabIndex = 1;
             this.numBuildsLabel.Text = "Number of Builds for Week";
-            this.numBuildsLabel.Click += new System.EventHandler(this.numBuildsLabel_Click);
             // 
             // nextButton
             // 
@@ -109,7 +107,6 @@ namespace WindowsFormsApp1
             this.numBuildsBox.Name = "numBuildsBox";
             this.numBuildsBox.Size = new System.Drawing.Size(132, 23);
             this.numBuildsBox.TabIndex = 1;
-            this.numBuildsBox.SelectedIndexChanged += new System.EventHandler(this.numBuildsBox_SelectedIndexChanged);
             // 
             // labsOpenBox
             // 
@@ -123,7 +120,6 @@ namespace WindowsFormsApp1
             this.labsOpenBox.Name = "labsOpenBox";
             this.labsOpenBox.Size = new System.Drawing.Size(132, 23);
             this.labsOpenBox.TabIndex = 2;
-            this.labsOpenBox.SelectedIndexChanged += new System.EventHandler(this.labsOpenBox_SelectedIndexChanged);
             // 
             // labsOpenLabel
             // 
@@ -135,7 +131,6 @@ namespace WindowsFormsApp1
             this.labsOpenLabel.Size = new System.Drawing.Size(172, 21);
             this.labsOpenLabel.TabIndex = 4;
             this.labsOpenLabel.Text = "Labs Open (days/week)";
-            this.labsOpenLabel.Click += new System.EventHandler(this.labsOpenLabel_Click);
             // 
             // label1
             // 
@@ -147,7 +142,6 @@ namespace WindowsFormsApp1
             this.label1.Size = new System.Drawing.Size(135, 21);
             this.label1.TabIndex = 6;
             this.label1.Text = "Available Workers";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // availableWorkers
             // 
@@ -155,7 +149,6 @@ namespace WindowsFormsApp1
             this.availableWorkers.Name = "availableWorkers";
             this.availableWorkers.Size = new System.Drawing.Size(129, 23);
             this.availableWorkers.TabIndex = 3;
-            this.availableWorkers.ValueChanged += new System.EventHandler(this.availableWorkers_ValueChanged);
             // 
             // groupInfo
             // 
@@ -180,7 +173,6 @@ namespace WindowsFormsApp1
             this.pictureBox2.Size = new System.Drawing.Size(205, 152);
             this.pictureBox2.TabIndex = 9;
             this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // FormPreliminaryInfo
             // 
@@ -196,7 +188,6 @@ namespace WindowsFormsApp1
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "General Information";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormPreliminaryInfo_FormClosing);
-            this.Load += new System.EventHandler(this.FormPreliminaryInfo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.availableWorkers)).EndInit();
             this.groupInfo.ResumeLayout(false);
             this.groupInfo.PerformLayout();

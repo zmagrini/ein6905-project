@@ -26,10 +26,6 @@ namespace WindowsFormsApp1
         private static List<List<object>> labFourList = new List<List<object>>();
         private static List<List<object>> labFiveList = new List<List<object>>();
 
-        private void loadShiftBox_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void FormSchedule_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -101,18 +97,25 @@ namespace WindowsFormsApp1
             //get data from previous form
             labOneList = FormPreliminaryInfo.labOnePrep;
             labOneTime = FormPreliminaryInfo.totalLab1TimeUsed;
+            int labOneTotal = labOneTime;
             labTwoList = FormPreliminaryInfo.labTwoPrep;
             labTwoTime = FormPreliminaryInfo.totalLab2TimeUsed;
+            int labTwoTotal = labTwoTime;
             labThreeList = FormPreliminaryInfo.labThreePrep;
             labThreeTime = FormPreliminaryInfo.totalLab3TimeUsed;
+            int labThreeTotal = labThreeTime;
             labFourList = FormPreliminaryInfo.labFourPrep;
             labFourTime = FormPreliminaryInfo.totalLab4TimeUsed;
+            int labFourTotal = labFourTime;
             labFiveList = FormPreliminaryInfo.labFivePrep;
             labFiveTime = FormPreliminaryInfo.totalLab5TimeUsed;
+            int labFiveTotal = labFiveTime;
             labSixList = FormPreliminaryInfo.labSixPrep;
             labSixTime = FormPreliminaryInfo.totalLab6TimeUsed;
+            int labSixTotal = labSixTime;
             labSevenList = FormPreliminaryInfo.labSevenPrep;
             labSevenTime = FormPreliminaryInfo.totalLab7TimeUsed;
+            int labSevenTotal = labSevenTime;
 
             /******************** LAB ONE BEGIN **********************/
             if (labOneTime > (FormPreliminaryInfo.daysPerWeek * 4))
@@ -141,18 +144,76 @@ namespace WindowsFormsApp1
                         
                 }
             }
-            
-            //places lab one labels in schedule
-            for (int column = 1; column < labOneTable.ColumnCount; column++)
+            //if the lab can eliminate all shift 1, do so
+            if (labOneTotal <= (FormPreliminaryInfo.daysPerWeek * 3))
             {
-                for (int row = 1; row < labOneTable.RowCount; row++)
+                for (int column = 1; column < labOneTable.ColumnCount; column++)
                 {
-                    if (label.Count <= 0)
+                    for (int row = 2; row < labOneTable.RowCount; row++)
                     {
-                        goto Lab2;
+                        if (label.Count <= 0)
+                        {
+                            goto Lab2;
+                        }
+                        labs[0].Controls.Add(label[0], column, row);
+                        label.RemoveAt(0);
                     }
-                    labs[0].Controls.Add(label[0], column, row);
-                    label.RemoveAt(0);
+                }
+            }
+            //else if it can eliminate some shift 1, do so
+            else if (labOneTotal < (FormPreliminaryInfo.daysPerWeek * 4) && labOneTotal > (FormPreliminaryInfo.daysPerWeek * 3))
+            {
+                int shiftOneDaysToSchedule = labOneTotal % FormPreliminaryInfo.daysPerWeek;
+                int currentColumn = 0;
+                for (int column = 1; column < labOneTable.ColumnCount; column++)
+                {
+                    for (int row = 1; row < labOneTable.RowCount; row++)
+                    {
+                        if (label.Count <= 0)
+                        {
+                            goto Lab2;
+                        }
+                        if (shiftOneDaysToSchedule > 0)
+                        {
+                            labs[0].Controls.Add(label[0], column, row);
+                            label.RemoveAt(0);
+                        }
+                    }
+                    shiftOneDaysToSchedule -= 1;
+                    if (shiftOneDaysToSchedule == 0)
+                    {
+                        currentColumn = column + 1;
+                        break;
+                    }
+                }
+                
+                for (int column = currentColumn; column < labOneTable.ColumnCount; column++)
+                {
+                    for (int row = 2; row < labOneTable.RowCount; row++)
+                    {
+                        if (label.Count <= 0)
+                        {
+                            goto Lab2;
+                        }
+                        labs[0].Controls.Add(label[0], column, row);
+                        label.RemoveAt(0);
+                    }
+                }
+            }
+            //if lab is full, place them
+            else
+            {
+                for (int column = 1; column < labOneTable.ColumnCount; column++)
+                {
+                    for (int row = 1; row < labOneTable.RowCount; row++)
+                    {
+                        if (label.Count <= 0)
+                        {
+                            goto Lab2;
+                        }
+                        labs[0].Controls.Add(label[0], column, row);
+                        label.RemoveAt(0);
+                    }
                 }
             }
             /****************** LAB ONE END **************************/
@@ -184,23 +245,82 @@ namespace WindowsFormsApp1
                 }
             }
 
-            //places lab one labels in schedule
-            for (int column = 1; column < labTwoTable.ColumnCount; column++)
+            //if the lab can eliminate all shift 1, do so
+            if (labTwoTotal <= (FormPreliminaryInfo.daysPerWeek * 3))
             {
-                for (int row = 1; row < labTwoTable.RowCount; row++)
+                for (int column = 1; column < labTwoTable.ColumnCount; column++)
                 {
-                    if (label.Count <= 0)
+                    for (int row = 2; row < labTwoTable.RowCount; row++)
                     {
-                        goto Lab3;
+                        if (label.Count <= 0)
+                        {
+                            goto Lab3;
+                        }
+                        labs[0].Controls.Add(label[0], column, row);
+                        label.RemoveAt(0);
                     }
-                    labs[1].Controls.Add(label[0], column, row);
-                    label.RemoveAt(0);
                 }
             }
-            /****************** LAB TWO END **************************/
+            //else if it can eliminate some shift 1, do so
+            else if (labTwoTotal < (FormPreliminaryInfo.daysPerWeek * 4) && labTwoTotal > (FormPreliminaryInfo.daysPerWeek * 3))
+            {
+                int shiftOneDaysToSchedule = labTwoTotal % FormPreliminaryInfo.daysPerWeek;
+                int currentColumn = 0;
+                for (int column = 1; column < labTwoTable.ColumnCount; column++)
+                {
+                    for (int row = 1; row < labTwoTable.RowCount; row++)
+                    {
+                        if (label.Count <= 0)
+                        {
+                            goto Lab3;
+                        }
+                        if (shiftOneDaysToSchedule > 0)
+                        {
+                            labs[1].Controls.Add(label[0], column, row);
+                            label.RemoveAt(0);
+                        }
+                    }
+                    shiftOneDaysToSchedule -= 1;
+                    if (shiftOneDaysToSchedule == 0)
+                    {
+                        currentColumn = column + 1;
+                        break;
+                    }
+                }
 
-            /******************** LAB THREE BEGIN **********************/
-            Lab3: if (labThreeTime > (FormPreliminaryInfo.daysPerWeek * 4))
+                for (int column = currentColumn; column < labTwoTable.ColumnCount; column++)
+                {
+                    for (int row = 2; row < labTwoTable.RowCount; row++)
+                    {
+                        if (label.Count <= 0)
+                        {
+                            goto Lab3;
+                        }
+                        labs[1].Controls.Add(label[0], column, row);
+                        label.RemoveAt(0);
+                    }
+                }
+            }
+            //if lab is full, place them
+            else
+            {
+                for (int column = 1; column < labTwoTable.ColumnCount; column++)
+                {
+                    for (int row = 1; row < labTwoTable.RowCount; row++)
+                    {
+                        if (label.Count <= 0)
+                        {
+                            goto Lab3;
+                        }
+                        labs[1].Controls.Add(label[0], column, row);
+                        label.RemoveAt(0);
+                    }
+                }
+            }
+        /****************** LAB TWO END **************************/
+
+        /******************** LAB THREE BEGIN **********************/
+        Lab3: if (labThreeTime > (FormPreliminaryInfo.daysPerWeek * 4))
                 labThreeTime = FormPreliminaryInfo.daysPerWeek * 4;
 
             //add all lab one labels to the list
@@ -224,23 +344,82 @@ namespace WindowsFormsApp1
                 }
             }
 
-            //places lab one labels in schedule
-            for (int column = 1; column < labThreeTable.ColumnCount; column++)
+            //if the lab can eliminate all shift 1, do so
+            if (labThreeTotal <= (FormPreliminaryInfo.daysPerWeek * 3))
             {
-                for (int row = 1; row < labThreeTable.RowCount; row++)
+                for (int column = 1; column < labThreeTable.ColumnCount; column++)
                 {
-                    if (label.Count <= 0)
+                    for (int row = 2; row < labThreeTable.RowCount; row++)
                     {
-                        goto Lab4;
+                        if (label.Count <= 0)
+                        {
+                            goto Lab4;
+                        }
+                        labs[0].Controls.Add(label[0], column, row);
+                        label.RemoveAt(0);
                     }
-                    labs[2].Controls.Add(label[0], column, row);
-                    label.RemoveAt(0);
                 }
             }
-            /****************** LAB THREE END **************************/
+            //else if it can eliminate some shift 1, do so
+            else if (labThreeTotal < (FormPreliminaryInfo.daysPerWeek * 4) && labThreeTotal > (FormPreliminaryInfo.daysPerWeek * 3))
+            {
+                int shiftOneDaysToSchedule = labThreeTotal % FormPreliminaryInfo.daysPerWeek;
+                int currentColumn = 0;
+                for (int column = 1; column < labThreeTable.ColumnCount; column++)
+                {
+                    for (int row = 1; row < labThreeTable.RowCount; row++)
+                    {
+                        if (label.Count <= 0)
+                        {
+                            goto Lab4;
+                        }
+                        if (shiftOneDaysToSchedule > 0)
+                        {
+                            labs[1].Controls.Add(label[0], column, row);
+                            label.RemoveAt(0);
+                        }
+                    }
+                    shiftOneDaysToSchedule -= 1;
+                    if (shiftOneDaysToSchedule == 0)
+                    {
+                        currentColumn = column + 1;
+                        break;
+                    }
+                }
 
-            /******************** LAB FOUR BEGIN **********************/
-            Lab4: if (labFourTime > (FormPreliminaryInfo.daysPerWeek * 4))
+                for (int column = currentColumn; column < labThreeTable.ColumnCount; column++)
+                {
+                    for (int row = 2; row < labThreeTable.RowCount; row++)
+                    {
+                        if (label.Count <= 0)
+                        {
+                            goto Lab4;
+                        }
+                        labs[1].Controls.Add(label[0], column, row);
+                        label.RemoveAt(0);
+                    }
+                }
+            }
+            //if lab is full, place them
+            else
+            {
+                for (int column = 1; column < labThreeTable.ColumnCount; column++)
+                {
+                    for (int row = 1; row < labThreeTable.RowCount; row++)
+                    {
+                        if (label.Count <= 0)
+                        {
+                            goto Lab4;
+                        }
+                        labs[1].Controls.Add(label[0], column, row);
+                        label.RemoveAt(0);
+                    }
+                }
+            }
+        /****************** LAB THREE END **************************/
+
+        /******************** LAB FOUR BEGIN **********************/
+        Lab4: if (labFourTime > (FormPreliminaryInfo.daysPerWeek * 4))
                 labFourTime = FormPreliminaryInfo.daysPerWeek * 4;
 
             //add all lab one labels to the list
@@ -264,23 +443,82 @@ namespace WindowsFormsApp1
                 }
             }
 
-            //places lab one labels in schedule
-            for (int column = 1; column < labFourTable.ColumnCount; column++)
+            //if the lab can eliminate all shift 1, do so
+            if (labFourTotal <= (FormPreliminaryInfo.daysPerWeek * 3))
             {
-                for (int row = 1; row < labFourTable.RowCount; row++)
+                for (int column = 1; column < labFourTable.ColumnCount; column++)
                 {
-                    if (label.Count <= 0)
+                    for (int row = 2; row < labFourTable.RowCount; row++)
                     {
-                        goto Lab5;
+                        if (label.Count <= 0)
+                        {
+                            goto Lab5;
+                        }
+                        labs[0].Controls.Add(label[0], column, row);
+                        label.RemoveAt(0);
                     }
-                    labs[3].Controls.Add(label[0], column, row);
-                    label.RemoveAt(0);
                 }
             }
-            /****************** LAB FOUR END **************************/
+            //else if it can eliminate some shift 1, do so
+            else if (labFourTotal < (FormPreliminaryInfo.daysPerWeek * 4) && labFourTotal > (FormPreliminaryInfo.daysPerWeek * 3))
+            {
+                int shiftOneDaysToSchedule = labFourTotal % FormPreliminaryInfo.daysPerWeek;
+                int currentColumn = 0;
+                for (int column = 1; column < labFourTable.ColumnCount; column++)
+                {
+                    for (int row = 1; row < labFourTable.RowCount; row++)
+                    {
+                        if (label.Count <= 0)
+                        {
+                            goto Lab5;
+                        }
+                        if (shiftOneDaysToSchedule > 0)
+                        {
+                            labs[1].Controls.Add(label[0], column, row);
+                            label.RemoveAt(0);
+                        }
+                    }
+                    shiftOneDaysToSchedule -= 1;
+                    if (shiftOneDaysToSchedule == 0)
+                    {
+                        currentColumn = column + 1;
+                        break;
+                    }
+                }
 
-            /******************** LAB FIVE BEGIN **********************/
-            Lab5: if (labFiveTime > (FormPreliminaryInfo.daysPerWeek * 4))
+                for (int column = currentColumn; column < labFourTable.ColumnCount; column++)
+                {
+                    for (int row = 2; row < labFourTable.RowCount; row++)
+                    {
+                        if (label.Count <= 0)
+                        {
+                            goto Lab5;
+                        }
+                        labs[1].Controls.Add(label[0], column, row);
+                        label.RemoveAt(0);
+                    }
+                }
+            }
+            //if lab is full, place them
+            else
+            {
+                for (int column = 1; column < labFourTable.ColumnCount; column++)
+                {
+                    for (int row = 1; row < labFourTable.RowCount; row++)
+                    {
+                        if (label.Count <= 0)
+                        {
+                            goto Lab5;
+                        }
+                        labs[1].Controls.Add(label[0], column, row);
+                        label.RemoveAt(0);
+                    }
+                }
+            }
+        /****************** LAB FOUR END **************************/
+
+        /******************** LAB FIVE BEGIN **********************/
+        Lab5: if (labFiveTime > (FormPreliminaryInfo.daysPerWeek * 4))
                 labFiveTime = FormPreliminaryInfo.daysPerWeek * 4;
 
             //add all lab one labels to the list
@@ -305,23 +543,82 @@ namespace WindowsFormsApp1
                 }
             }
 
-            //places lab one labels in schedule
-            for (int column = 1; column < labFiveTable.ColumnCount; column++)
+            //if the lab can eliminate all shift 1, do so
+            if (labFiveTotal <= (FormPreliminaryInfo.daysPerWeek * 3))
             {
-                for (int row = 1; row < labFiveTable.RowCount; row++)
+                for (int column = 1; column < labFiveTable.ColumnCount; column++)
                 {
-                    if (label.Count <= 0)
+                    for (int row = 2; row < labFiveTable.RowCount; row++)
                     {
-                        goto Lab6;
+                        if (label.Count <= 0)
+                        {
+                            goto Lab6;
+                        }
+                        labs[0].Controls.Add(label[0], column, row);
+                        label.RemoveAt(0);
                     }
-                    labs[4].Controls.Add(label[0], column, row);
-                    label.RemoveAt(0);
                 }
             }
-            /****************** LAB FIVE END **************************/
+            //else if it can eliminate some shift 1, do so
+            else if (labFiveTotal < (FormPreliminaryInfo.daysPerWeek * 4) && labFiveTotal > (FormPreliminaryInfo.daysPerWeek * 3))
+            {
+                int shiftOneDaysToSchedule = labFiveTotal % FormPreliminaryInfo.daysPerWeek;
+                int currentColumn = 0;
+                for (int column = 1; column < labFiveTable.ColumnCount; column++)
+                {
+                    for (int row = 1; row < labFiveTable.RowCount; row++)
+                    {
+                        if (label.Count <= 0)
+                        {
+                            goto Lab6;
+                        }
+                        if (shiftOneDaysToSchedule > 0)
+                        {
+                            labs[1].Controls.Add(label[0], column, row);
+                            label.RemoveAt(0);
+                        }
+                    }
+                    shiftOneDaysToSchedule -= 1;
+                    if (shiftOneDaysToSchedule == 0)
+                    {
+                        currentColumn = column + 1;
+                        break;
+                    }
+                }
 
-            /******************** LAB SIX BEGIN **********************/
-            Lab6: if (labSixTime > (FormPreliminaryInfo.daysPerWeek * 4))
+                for (int column = currentColumn; column < labFiveTable.ColumnCount; column++)
+                {
+                    for (int row = 2; row < labFiveTable.RowCount; row++)
+                    {
+                        if (label.Count <= 0)
+                        {
+                            goto Lab6;
+                        }
+                        labs[1].Controls.Add(label[0], column, row);
+                        label.RemoveAt(0);
+                    }
+                }
+            }
+            //if lab is full, place them
+            else
+            {
+                for (int column = 1; column < labFiveTable.ColumnCount; column++)
+                {
+                    for (int row = 1; row < labFiveTable.RowCount; row++)
+                    {
+                        if (label.Count <= 0)
+                        {
+                            goto Lab6;
+                        }
+                        labs[1].Controls.Add(label[0], column, row);
+                        label.RemoveAt(0);
+                    }
+                }
+            }
+        /****************** LAB FIVE END **************************/
+
+        /******************** LAB SIX BEGIN **********************/
+        Lab6: if (labSixTime > (FormPreliminaryInfo.daysPerWeek * 4))
                 labSixTime = FormPreliminaryInfo.daysPerWeek * 4;
 
             //add all lab one labels to the list
@@ -346,23 +643,82 @@ namespace WindowsFormsApp1
                 }
             }
 
-            //places lab one labels in schedule
-            for (int column = 1; column < labSixTable.ColumnCount; column++)
+            //if the lab can eliminate all shift 1, do so
+            if (labSixTotal <= (FormPreliminaryInfo.daysPerWeek * 3))
             {
-                for (int row = 1; row < labSixTable.RowCount; row++)
+                for (int column = 1; column < labSixTable.ColumnCount; column++)
                 {
-                    if (label.Count <= 0)
+                    for (int row = 2; row < labSixTable.RowCount; row++)
                     {
-                        goto Lab7;
+                        if (label.Count <= 0)
+                        {
+                            goto Lab7;
+                        }
+                        labs[0].Controls.Add(label[0], column, row);
+                        label.RemoveAt(0);
                     }
-                    labs[5].Controls.Add(label[0], column, row);
-                    label.RemoveAt(0);
                 }
             }
-            /****************** LAB SIX END **************************/
+            //else if it can eliminate some shift 1, do so
+            else if (labSixTotal < (FormPreliminaryInfo.daysPerWeek * 4) && labSixTotal > (FormPreliminaryInfo.daysPerWeek * 3))
+            {
+                int shiftOneDaysToSchedule = labSixTotal % FormPreliminaryInfo.daysPerWeek;
+                int currentColumn = 0;
+                for (int column = 1; column < labSixTable.ColumnCount; column++)
+                {
+                    for (int row = 1; row < labSixTable.RowCount; row++)
+                    {
+                        if (label.Count <= 0)
+                        {
+                            goto Lab7;
+                        }
+                        if (shiftOneDaysToSchedule > 0)
+                        {
+                            labs[1].Controls.Add(label[0], column, row);
+                            label.RemoveAt(0);
+                        }
+                    }
+                    shiftOneDaysToSchedule -= 1;
+                    if (shiftOneDaysToSchedule == 0)
+                    {
+                        currentColumn = column + 1;
+                        break;
+                    }
+                }
 
-            /******************** LAB SEVEN BEGIN **********************/
-            Lab7: if (labSevenTime > (FormPreliminaryInfo.daysPerWeek * 4))
+                for (int column = currentColumn; column < labSixTable.ColumnCount; column++)
+                {
+                    for (int row = 2; row < labSixTable.RowCount; row++)
+                    {
+                        if (label.Count <= 0)
+                        {
+                            goto Lab7;
+                        }
+                        labs[1].Controls.Add(label[0], column, row);
+                        label.RemoveAt(0);
+                    }
+                }
+            }
+            //if lab is full, place them
+            else
+            {
+                for (int column = 1; column < labSixTable.ColumnCount; column++)
+                {
+                    for (int row = 1; row < labSixTable.RowCount; row++)
+                    {
+                        if (label.Count <= 0)
+                        {
+                            goto Lab7;
+                        }
+                        labs[1].Controls.Add(label[0], column, row);
+                        label.RemoveAt(0);
+                    }
+                }
+            }
+        /****************** LAB SIX END **************************/
+
+        /******************** LAB SEVEN BEGIN **********************/
+        Lab7: if (labSevenTime > (FormPreliminaryInfo.daysPerWeek * 4))
                 labSevenTime = FormPreliminaryInfo.daysPerWeek * 4;
 
             //add all lab one labels to the list
@@ -387,17 +743,76 @@ namespace WindowsFormsApp1
                 }
             }
 
-            //places lab one labels in schedule
-            for (int column = 1; column < labSevenTable.ColumnCount; column++)
+             //if the lab can eliminate all shift 1, do so
+            if (labSevenTotal <= (FormPreliminaryInfo.daysPerWeek * 3))
             {
-                for (int row = 1; row < labSevenTable.RowCount; row++)
+                for (int column = 1; column < labSevenTable.ColumnCount; column++)
                 {
-                    if (label.Count <= 0)
+                    for (int row = 2; row < labSevenTable.RowCount; row++)
                     {
-                        return;
+                        if (label.Count <= 0)
+                        {
+                            goto Lab4;
+                        }
+                        labs[0].Controls.Add(label[0], column, row);
+                        label.RemoveAt(0);
                     }
-                    labs[6].Controls.Add(label[0], column, row);
-                    label.RemoveAt(0);
+                }
+            }
+            //else if it can eliminate some shift 1, do so
+            else if (labSevenTotal < (FormPreliminaryInfo.daysPerWeek * 4) && labSevenTotal > (FormPreliminaryInfo.daysPerWeek * 3))
+            {
+                int shiftOneDaysToSchedule = labSevenTotal % FormPreliminaryInfo.daysPerWeek;
+                int currentColumn = 0;
+                for (int column = 1; column < labSevenTable.ColumnCount; column++)
+                {
+                    for (int row = 1; row < labSevenTable.RowCount; row++)
+                    {
+                        if (label.Count <= 0)
+                        {
+                            goto Lab4;
+                        }
+                        if (shiftOneDaysToSchedule > 0)
+                        {
+                            labs[1].Controls.Add(label[0], column, row);
+                            label.RemoveAt(0);
+                        }
+                    }
+                    shiftOneDaysToSchedule -= 1;
+                    if (shiftOneDaysToSchedule == 0)
+                    {
+                        currentColumn = column + 1;
+                        break;
+                    }
+                }
+
+                for (int column = currentColumn; column < labSevenTable.ColumnCount; column++)
+                {
+                    for (int row = 2; row < labSevenTable.RowCount; row++)
+                    {
+                        if (label.Count <= 0)
+                        {
+                            goto Lab4;
+                        }
+                        labs[1].Controls.Add(label[0], column, row);
+                        label.RemoveAt(0);
+                    }
+                }
+            }
+            //if lab is full, place them
+            else
+            {
+                for (int column = 1; column < labSevenTable.ColumnCount; column++)
+                {
+                    for (int row = 1; row < labSevenTable.RowCount; row++)
+                    {
+                        if (label.Count <= 0)
+                        {
+                            goto Lab4;
+                        }
+                        labs[1].Controls.Add(label[0], column, row);
+                        label.RemoveAt(0);
+                    }
                 }
             }
             /****************** LAB SEVEN END **************************/

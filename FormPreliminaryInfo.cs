@@ -38,13 +38,18 @@ namespace WindowsFormsApp1
         private static List<object> labFiveBuildOrder = new List<object>();
         private static List<object> labSixBuildOrder = new List<object>();
         private static List<object> labSevenBuildOrder = new List<object>();
+        public static List<int> shiftsRemainingPerLab = new List<int>();
+        public static List<List<object>> labOnePrep = new List<List<object>>();
 
-        private void FormPreliminaryInfo_Load(object sender, EventArgs e)
+        private void FormPreliminaryInfo_FormClosing(object sender, FormClosingEventArgs e)
         {
-            
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                Application.Exit();
+            }
         }
 
-        private void numBuildsLabel_Click(object sender, EventArgs e)
+        private void pictureBox2_Click(object sender, EventArgs e)
         {
 
         }
@@ -54,50 +59,24 @@ namespace WindowsFormsApp1
 
         }
 
-        public static List<int> shiftsRemainingPerLab = new List<int>();
-        public static List<List<object>> labOnePrep = new List<List<object>>();
-
-        private void labsOpenLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void label1_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void labsOpenBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void FormPreliminaryInfo_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void numBuildsBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void titleLabel_Click(object sender, EventArgs e)
+        private void groupInfo_Enter(object sender, EventArgs e)
         {
 
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FormPreliminaryInfo_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                Application.Exit();
-            }
         }
 
         public static List<List<object>> labTwoPrep = new List<List<object>>();
@@ -108,10 +87,8 @@ namespace WindowsFormsApp1
         public static List<List<object>> labSevenPrep = new List<List<object>>();
         object labCheck1, labCheck2, labCheck3, labCheck4, labCheck5, labCheck6;
         private List<List<object>> listOfBuilds = new List<List<object>>();
-
         public static int numBuilds;
         List<Label> priorityLabel = new List<Label>();
-        
         Dictionary<string, List<object>> labBuildOrder = new Dictionary<string, List<object>>()
                         {
                             {"Lab 1", labOneBuildOrder},

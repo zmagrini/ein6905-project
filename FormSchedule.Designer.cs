@@ -74,7 +74,7 @@ namespace WindowsFormsApp1
             this.labOneTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.73913F));
             this.labOneTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.73913F));
             this.labOneTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.73913F));
-            this.labOneTable.Size = new System.Drawing.Size(432, 123);
+            this.labOneTable.Size = new System.Drawing.Size(511, 143);
             this.labOneTable.TabIndex = 6;
             this.labOneTable.CellPaint += new System.Windows.Forms.TableLayoutCellPaintEventHandler(this.labOneTable_CellPaint);
             // 
@@ -90,7 +90,7 @@ namespace WindowsFormsApp1
             this.labFourTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.labFourTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.labFourTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.labFourTable.Location = new System.Drawing.Point(12, 233);
+            this.labFourTable.Location = new System.Drawing.Point(12, 247);
             this.labFourTable.Name = "labFourTable";
             this.labFourTable.RowCount = 5;
             this.labFourTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.04348F));
@@ -98,7 +98,7 @@ namespace WindowsFormsApp1
             this.labFourTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.73913F));
             this.labFourTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.73913F));
             this.labFourTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.73913F));
-            this.labFourTable.Size = new System.Drawing.Size(432, 123);
+            this.labFourTable.Size = new System.Drawing.Size(511, 142);
             this.labFourTable.TabIndex = 7;
             this.labFourTable.CellPaint += new System.Windows.Forms.TableLayoutCellPaintEventHandler(this.labOneTable_CellPaint);
             // 
@@ -114,7 +114,7 @@ namespace WindowsFormsApp1
             this.labFiveTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.labFiveTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.labFiveTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.labFiveTable.Location = new System.Drawing.Point(461, 233);
+            this.labFiveTable.Location = new System.Drawing.Point(529, 247);
             this.labFiveTable.Name = "labFiveTable";
             this.labFiveTable.RowCount = 5;
             this.labFiveTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.04348F));
@@ -122,7 +122,7 @@ namespace WindowsFormsApp1
             this.labFiveTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.73913F));
             this.labFiveTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.73913F));
             this.labFiveTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.73913F));
-            this.labFiveTable.Size = new System.Drawing.Size(432, 123);
+            this.labFiveTable.Size = new System.Drawing.Size(513, 142);
             this.labFiveTable.TabIndex = 8;
             this.labFiveTable.CellPaint += new System.Windows.Forms.TableLayoutCellPaintEventHandler(this.labOneTable_CellPaint);
             // 
@@ -138,7 +138,7 @@ namespace WindowsFormsApp1
             this.labTwoTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.labTwoTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.labTwoTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.labTwoTable.Location = new System.Drawing.Point(461, 63);
+            this.labTwoTable.Location = new System.Drawing.Point(529, 63);
             this.labTwoTable.Name = "labTwoTable";
             this.labTwoTable.RowCount = 5;
             this.labTwoTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.04348F));
@@ -146,7 +146,7 @@ namespace WindowsFormsApp1
             this.labTwoTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.73913F));
             this.labTwoTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.73913F));
             this.labTwoTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.73913F));
-            this.labTwoTable.Size = new System.Drawing.Size(432, 123);
+            this.labTwoTable.Size = new System.Drawing.Size(513, 143);
             this.labTwoTable.TabIndex = 9;
             this.labTwoTable.CellPaint += new System.Windows.Forms.TableLayoutCellPaintEventHandler(this.labOneTable_CellPaint);
             // 
@@ -162,7 +162,7 @@ namespace WindowsFormsApp1
             this.labSixTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.labSixTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.labSixTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.labSixTable.Location = new System.Drawing.Point(908, 233);
+            this.labSixTable.Location = new System.Drawing.Point(1048, 247);
             this.labSixTable.Name = "labSixTable";
             this.labSixTable.RowCount = 5;
             this.labSixTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.04348F));
@@ -170,7 +170,7 @@ namespace WindowsFormsApp1
             this.labSixTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.73913F));
             this.labSixTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.73913F));
             this.labSixTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.73913F));
-            this.labSixTable.Size = new System.Drawing.Size(432, 123);
+            this.labSixTable.Size = new System.Drawing.Size(515, 142);
             this.labSixTable.TabIndex = 10;
             this.labSixTable.CellPaint += new System.Windows.Forms.TableLayoutCellPaintEventHandler(this.labOneTable_CellPaint);
             // 
@@ -186,7 +186,7 @@ namespace WindowsFormsApp1
             this.labSevenTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.labSevenTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.labSevenTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.labSevenTable.Location = new System.Drawing.Point(461, 399);
+            this.labSevenTable.Location = new System.Drawing.Point(529, 436);
             this.labSevenTable.Name = "labSevenTable";
             this.labSevenTable.RowCount = 5;
             this.labSevenTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.89229F));
@@ -194,7 +194,7 @@ namespace WindowsFormsApp1
             this.labSevenTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.77693F));
             this.labSevenTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.77693F));
             this.labSevenTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.77693F));
-            this.labSevenTable.Size = new System.Drawing.Size(432, 123);
+            this.labSevenTable.Size = new System.Drawing.Size(513, 140);
             this.labSevenTable.TabIndex = 11;
             this.labSevenTable.CellPaint += new System.Windows.Forms.TableLayoutCellPaintEventHandler(this.labOneTable_CellPaint);
             // 
@@ -210,7 +210,7 @@ namespace WindowsFormsApp1
             this.labThreeTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.labThreeTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.labThreeTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.labThreeTable.Location = new System.Drawing.Point(908, 63);
+            this.labThreeTable.Location = new System.Drawing.Point(1048, 63);
             this.labThreeTable.Name = "labThreeTable";
             this.labThreeTable.RowCount = 5;
             this.labThreeTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.04348F));
@@ -218,7 +218,7 @@ namespace WindowsFormsApp1
             this.labThreeTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.73913F));
             this.labThreeTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.73913F));
             this.labThreeTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.73913F));
-            this.labThreeTable.Size = new System.Drawing.Size(432, 123);
+            this.labThreeTable.Size = new System.Drawing.Size(515, 143);
             this.labThreeTable.TabIndex = 12;
             this.labThreeTable.CellPaint += new System.Windows.Forms.TableLayoutCellPaintEventHandler(this.labOneTable_CellPaint);
             // 
@@ -226,7 +226,7 @@ namespace WindowsFormsApp1
             // 
             this.labOneLabel.AutoSize = true;
             this.labOneLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labOneLabel.Location = new System.Drawing.Point(202, 39);
+            this.labOneLabel.Location = new System.Drawing.Point(243, 39);
             this.labOneLabel.Name = "labOneLabel";
             this.labOneLabel.Size = new System.Drawing.Size(46, 21);
             this.labOneLabel.TabIndex = 13;
@@ -236,7 +236,7 @@ namespace WindowsFormsApp1
             // 
             this.labTwoLabel.AutoSize = true;
             this.labTwoLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labTwoLabel.Location = new System.Drawing.Point(649, 39);
+            this.labTwoLabel.Location = new System.Drawing.Point(757, 39);
             this.labTwoLabel.Name = "labTwoLabel";
             this.labTwoLabel.Size = new System.Drawing.Size(49, 21);
             this.labTwoLabel.TabIndex = 14;
@@ -246,7 +246,7 @@ namespace WindowsFormsApp1
             // 
             this.labThreeLabel.AutoSize = true;
             this.labThreeLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labThreeLabel.Location = new System.Drawing.Point(1096, 39);
+            this.labThreeLabel.Location = new System.Drawing.Point(1280, 39);
             this.labThreeLabel.Name = "labThreeLabel";
             this.labThreeLabel.Size = new System.Drawing.Size(49, 21);
             this.labThreeLabel.TabIndex = 15;
@@ -256,7 +256,7 @@ namespace WindowsFormsApp1
             // 
             this.labSixLabel.AutoSize = true;
             this.labSixLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labSixLabel.Location = new System.Drawing.Point(1096, 209);
+            this.labSixLabel.Location = new System.Drawing.Point(1280, 223);
             this.labSixLabel.Name = "labSixLabel";
             this.labSixLabel.Size = new System.Drawing.Size(49, 21);
             this.labSixLabel.TabIndex = 18;
@@ -266,7 +266,7 @@ namespace WindowsFormsApp1
             // 
             this.labFourLabel.AutoSize = true;
             this.labFourLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labFourLabel.Location = new System.Drawing.Point(199, 209);
+            this.labFourLabel.Location = new System.Drawing.Point(240, 223);
             this.labFourLabel.Name = "labFourLabel";
             this.labFourLabel.Size = new System.Drawing.Size(49, 21);
             this.labFourLabel.TabIndex = 17;
@@ -276,7 +276,7 @@ namespace WindowsFormsApp1
             // 
             this.labFiveLabel.AutoSize = true;
             this.labFiveLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labFiveLabel.Location = new System.Drawing.Point(649, 209);
+            this.labFiveLabel.Location = new System.Drawing.Point(757, 223);
             this.labFiveLabel.Name = "labFiveLabel";
             this.labFiveLabel.Size = new System.Drawing.Size(49, 21);
             this.labFiveLabel.TabIndex = 16;
@@ -286,7 +286,7 @@ namespace WindowsFormsApp1
             // 
             this.labSevenLabel.AutoSize = true;
             this.labSevenLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labSevenLabel.Location = new System.Drawing.Point(648, 375);
+            this.labSevenLabel.Location = new System.Drawing.Point(757, 412);
             this.labSevenLabel.Name = "labSevenLabel";
             this.labSevenLabel.Size = new System.Drawing.Size(49, 21);
             this.labSevenLabel.TabIndex = 19;
@@ -294,9 +294,9 @@ namespace WindowsFormsApp1
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1244, 528);
+            this.button1.Location = new System.Drawing.Point(1503, 577);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(60, 23);
             this.button1.TabIndex = 20;
             this.button1.Text = "Finish";
             this.button1.UseVisualStyleBackColor = true;
@@ -308,9 +308,9 @@ namespace WindowsFormsApp1
             this.legendBox.Controls.Add(this.loadShiftsBox);
             this.legendBox.Controls.Add(this.workShiftBox);
             this.legendBox.Controls.Add(this.loadShiftBox);
-            this.legendBox.Location = new System.Drawing.Point(1160, 399);
+            this.legendBox.Location = new System.Drawing.Point(1419, 462);
             this.legendBox.Name = "legendBox";
-            this.legendBox.Size = new System.Drawing.Size(159, 100);
+            this.legendBox.Size = new System.Drawing.Size(144, 100);
             this.legendBox.TabIndex = 21;
             this.legendBox.TabStop = false;
             this.legendBox.Text = "Legend";
@@ -348,13 +348,12 @@ namespace WindowsFormsApp1
             this.loadShiftBox.Size = new System.Drawing.Size(24, 24);
             this.loadShiftBox.TabIndex = 0;
             this.loadShiftBox.TabStop = false;
-            this.loadShiftBox.Click += new System.EventHandler(this.loadShiftBox_Click);
             // 
             // FormSchedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1352, 563);
+            this.ClientSize = new System.Drawing.Size(1575, 612);
             this.Controls.Add(this.legendBox);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.labSevenLabel);
