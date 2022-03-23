@@ -256,7 +256,7 @@ namespace WindowsFormsApp1
                         {
                             goto Lab3;
                         }
-                        labs[0].Controls.Add(label[0], column, row);
+                        labs[1].Controls.Add(label[0], column, row);
                         label.RemoveAt(0);
                     }
                 }
