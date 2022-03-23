@@ -752,7 +752,7 @@ namespace WindowsFormsApp1
                     {
                         if (label.Count <= 0)
                         {
-                            goto Lab4;
+                            break;
                         }
                         labs[0].Controls.Add(label[0], column, row);
                         label.RemoveAt(0);
@@ -770,7 +770,7 @@ namespace WindowsFormsApp1
                     {
                         if (label.Count <= 0)
                         {
-                            goto Lab4;
+                            break;
                         }
                         if (shiftOneDaysToSchedule > 0)
                         {
@@ -792,7 +792,7 @@ namespace WindowsFormsApp1
                     {
                         if (label.Count <= 0)
                         {
-                            goto Lab4;
+                            break;
                         }
                         labs[1].Controls.Add(label[0], column, row);
                         label.RemoveAt(0);
@@ -808,7 +808,7 @@ namespace WindowsFormsApp1
                     {
                         if (label.Count <= 0)
                         {
-                            goto Lab4;
+                            break;
                         }
                         labs[1].Controls.Add(label[0], column, row);
                         label.RemoveAt(0);
