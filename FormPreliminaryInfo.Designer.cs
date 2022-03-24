@@ -40,6 +40,7 @@ namespace WindowsFormsApp1
             this.availableWorkers = new System.Windows.Forms.NumericUpDown();
             this.groupInfo = new System.Windows.Forms.GroupBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.availableWorkers)).BeginInit();
             this.groupInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -174,12 +175,23 @@ namespace WindowsFormsApp1
             this.pictureBox2.TabIndex = 9;
             this.pictureBox2.TabStop = false;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label2.Location = new System.Drawing.Point(0, 342);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(38, 15);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "label2";
+            // 
             // FormPreliminaryInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(507, 358);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.groupInfo);
             this.Controls.Add(this.nextButton);
             this.Controls.Add(this.titleLabel);
@@ -188,6 +200,7 @@ namespace WindowsFormsApp1
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "General Information";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormPreliminaryInfo_FormClosing);
+            this.Load += new System.EventHandler(this.FormPreliminaryInfo_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.availableWorkers)).EndInit();
             this.groupInfo.ResumeLayout(false);
             this.groupInfo.PerformLayout();
@@ -209,6 +222,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.NumericUpDown availableWorkers;
         private System.Windows.Forms.GroupBox groupInfo;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label2;
     }
 }
 

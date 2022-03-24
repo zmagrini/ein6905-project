@@ -15,6 +15,7 @@ using Microsoft.Win32;
 using System.Threading;
 using Microsoft.VisualBasic.FileIO;
 using System.Text.RegularExpressions;
+using System.Security.Cryptography;
 
 namespace WindowsFormsApp1
 {
@@ -49,34 +50,22 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
+        private void FormPreliminaryInfo_Load_1(object sender, EventArgs e)
         {
+            label2.Text = "v1.0.0";
 
         }
 
-        private void availableWorkers_ValueChanged(object sender, EventArgs e)
+        static string CalculateMD5(string filename)
         {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FormPreliminaryInfo_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupInfo_Enter(object sender, EventArgs e)
-        {
-
+            using (var md5 = MD5.Create())
+            {
+                using (var stream = File.OpenRead(filename))
+                {
+                    var hash = md5.ComputeHash(stream);
+                    return BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant();
+                }
+            }
         }
 
         public static List<List<object>> labTwoPrep = new List<List<object>>();
