@@ -215,7 +215,7 @@ namespace WindowsFormsApp1
                     MessageBox.Show("Error! Lab requirements must be selected for each build!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if (labsChosen[i].CheckedItems.Count > 1 && labsChosen[i].SelectedItems.Contains("All Labs"))
+                if (labsChosen[i].CheckedItems.Count > 1 /*&& labsChosen[i].SelectedItems.Contains("All Labs")*/ && labsChosen[i].GetItemChecked(7))
                 {
                     MessageBox.Show("Error! If 'All Labs' is selected, no other labs may be chosen!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
